@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\ThemeOption;
+
+use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Storage;
 
@@ -48,7 +53,7 @@ class PageController extends Controller
                     'locale' => 'en_PK',
                     'site_name' => 'Umar Waqas',
                     'url' => url()->current(),
-                    'image' => asset('images/Web-Developer-in-Lahore.jpg'),
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
                     'description' => 'Best web development and design services in Lahore with our professional team. Let us help you build a successful online platform for your business.',
                 ],
@@ -56,12 +61,12 @@ class PageController extends Controller
                     'title' => 'High-Quality Web Development | WordPress, Laravel, CodeIgniter',
                     'card' => 'summary_large_image',
                     'description' => 'Best web development and design services in Lahore with our professional team. Let us help you build a successful online platform for your business.',
-                    'image' => asset('images/Web-Developer-in-Lahore.jpg'),
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ]
             ]);
             // ])->with($this->data);
-        }
+    }
 
     public function about()
     {
@@ -82,7 +87,7 @@ class PageController extends Controller
                     'locale' => 'en_PK',
                     'site_name' => 'Umar Waqas',
                     'url' => url()->current(),
-                    'image' => asset('images/Web-Developer-in-Lahore.jpg'),
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
                     'description' => 'Elevate your online presence with Umar Waqas\'s web development expertise in WordPress, Laravel, and CodeIgniter.',
                 ],
@@ -90,11 +95,11 @@ class PageController extends Controller
                     'title' => 'Umar Waqas - Premier Web Development Services | Lahore, Pakistan',
                     'card' => 'summary_large_image',
                     'description' => 'Elevate your online presence with Umar Waqas\'s web development expertise in WordPress, Laravel, and CodeIgniter.',
-                    'image' => asset('images/Web-Developer-in-Lahore.jpg'),
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ]
             ])->with($data);
-        }
+    }
 
     public function services()
     {
@@ -108,7 +113,7 @@ class PageController extends Controller
                     'locale' => 'en_PK',
                     'site_name' => 'Umar Waqas',
                     'url' => url()->current(),
-                    'image' => asset('images/Web-Developer-in-Lahore.jpg'),
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
                     'description' => 'Explore our wide range of services including web development, design, and consulting. We provide top-notch solutions for your digital needs.',
                 ],
@@ -116,12 +121,11 @@ class PageController extends Controller
                     'title' => 'Umar Waqas - Premier Web Development Services | Lahore, Pakistan',
                     'card' => 'summary_large_image',
                     'description' => 'Explore our wide range of services including web development, design, and consulting. We provide top-notch solutions for your digital needs.',
-                    'image' => asset('images/Web-Developer-in-Lahore.jpg'),
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ]
         ]);
     }
-
     public function work()
     {
         return view('pages.work')->with([
@@ -134,7 +138,7 @@ class PageController extends Controller
                     'locale' => 'en_PK',
                     'site_name' => 'Umar Waqas',
                     'url' => url()->current(),
-                    'image' => asset('images/Web-Developer-in-Lahore.jpg'),
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
                     'description' => 'View our portfolio showcasing web development projects completed by Umar Waqas. See our work in WordPress, Laravel, and other technologies.',
                 ],
@@ -142,7 +146,7 @@ class PageController extends Controller
                     'title' => 'Umar Waqas - Premier Web Development Services | Lahore, Pakistan',
                     'card' => 'summary_large_image',
                     'description' => 'View our portfolio showcasing web development projects completed by Umar Waqas. See our work in WordPress, Laravel, and other technologies.',
-                    'image' => asset('images/Web-Developer-in-Lahore.jpg'),
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ]
         ]);
@@ -160,7 +164,7 @@ class PageController extends Controller
                     'locale' => 'en_PK',
                     'site_name' => 'Umar Waqas',
                     'url' => url()->current(),
-                    'image' => asset('images/Web-Developer-in-Lahore.jpg'),
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
                     'description' => 'Stay informed with Umar Waqas\'s web development blog. Discover valuable articles, expert tips, and current web development trends.',
                 ],
@@ -168,7 +172,7 @@ class PageController extends Controller
                     'title' => 'Web Development Blog | Insights, Tips, and Trends',
                     'card' => 'summary_large_image',
                     'description' => 'Stay informed with Umar Waqas\'s web development blog. Discover valuable articles, expert tips, and current web development trends.',
-                    'image' => asset('images/Web-Developer-in-Lahore.jpg'),
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ]
         ]);
@@ -176,6 +180,11 @@ class PageController extends Controller
 
     public function contact()
     {
+        $data['email']    = ThemeOption::getOptionByKey('email');
+        $data['phone']    = ThemeOption::getOptionByKey('phone');
+        $data['address']  = ThemeOption::getOptionByKey('address');
+        $data['location'] = ThemeOption::getOptionByKey('location');
+
         return view('pages.contact')->with([
             'meta' => [
                 'title' => 'Contact Us - Get in Touch with Umar Waqas',
@@ -186,7 +195,7 @@ class PageController extends Controller
                     'locale' => 'en_PK',
                     'site_name' => 'Umar Waqas',
                     'url' => url()->current(),
-                    'image' => asset('images/Web-Developer-in-Lahore.jpg'),
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
                     'description' => 'Contact Umar Waqas for any web development inquiries, consultations, or collaborations. We are here to assist you with your digital needs.',
                 ],
@@ -194,10 +203,29 @@ class PageController extends Controller
                     'title' => 'Umar Waqas - Premier Web Development Services | Lahore, Pakistan',
                     'card' => 'summary_large_image',
                     'description' => 'Contact Umar Waqas for any web development inquiries, consultations, or collaborations. We are here to assist you with your digital needs.',
-                    'description' => 'Contact Umar Waqas for any web development inquiries, consultations, or collaborations. We are here to assist you with your digital needs.',
-                    'image' => asset('images/Web-Developer-in-Lahore.jpg'),
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ]
-        ]);
+        ])->with($data);
     }
+    public function store(Request $request)
+    {
+        // Validate incoming data
+        $validatedData = $request->validate([
+            'name'    => 'required|string|max:255',
+            'email'   => 'required|email|max:255',
+            'phone'   => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        // Store the contact message in the database
+        Contact::create($validatedData);
+
+        // Send the email
+        Mail::to('info@umarwaqas.com')->send(new ContactMail($validatedData));
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Message sent and email delivered successfully!');
+    }
+
 }

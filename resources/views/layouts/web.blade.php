@@ -34,7 +34,7 @@
         @vite(['resources/assets/sass/app.scss', 'resources/assets/js/app.js'])
         @yield('template_linked_css') --}}
         @yield('head')
-        {{-- @include('scripts.ga-analytics') --}}
+        @include('scripts.ga-analytics')
     </head>
     <body class="relative h-screen overflow-y-auto overflow-x-hidden bg-light text-dark dark:bg-dark-2 dark:text-light">
 

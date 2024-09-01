@@ -10,30 +10,30 @@ Route::get('/welcome', function () {
 });
 
 
-// Route to list all routes
-Route::get('/routes', [CommandController::class, 'routeList'])->name('routes.list');
+Route::get('/routelist',        [CommandController::class, 'routeList']);
 
-// Routes for migration commands
-Route::get('/migrate', [CommandController::class, 'migrate'])->name('migrate');
-Route::get('/migrate/fresh', [CommandController::class, 'migrateFresh'])->name('migrate.fresh');
+Route::get('/migrate',          [CommandController::class, 'migrate']);
+Route::get('/migrate/install',  [CommandController::class, 'migrateInstall']);
+Route::get('/migrate/fresh',    [CommandController::class, 'migrateFresh']);
+Route::get('/migrate/rollback', [CommandController::class, 'migrateRllback']);
 
-// Route for seeding database
-Route::get('/seed', [CommandController::class, 'seed'])->name('seed');
+Route::get('/writer/seed',      [CommandController::class, 'writerSeed']);
+Route::get('/order/seed',       [CommandController::class, 'orderSeeder']);
+Route::get('/seed',             [CommandController::class, 'seed']);
 
-// Routes for clearing caches
-Route::get('/cache/clear', [CommandController::class, 'clearCache'])->name('cache.clear');
-Route::get('/cache/clear/all', [CommandController::class, 'clearAllCache'])->name('cache.clear.all');
-Route::get('/cache/config', [CommandController::class, 'clearConfigCache'])->name('cache.config.clear');
-Route::get('/cache/route', [CommandController::class, 'clearRouteCache'])->name('cache.route.clear');
-Route::get('/cache/view', [CommandController::class, 'clearViewCache'])->name('cache.view.clear');
+Route::get('/clear/all/cache',  [CommandController::class, 'clearAllCache']);
 
-// Routes for caching
-Route::get('/cache/config', [CommandController::class, 'cacheConfig'])->name('cache.config');
-Route::get('/cache/routes', [CommandController::class, 'cacheRoutes'])->name('cache.routes');
-Route::get('/cache/views', [CommandController::class, 'cacheViews'])->name('cache.views');
+Route::get('/clear/cache',      [CommandController::class, 'clearCache']);
+Route::get('/clear/config/cache', [CommandController::class, 'clearConfigCache']);
+Route::get('/clear/route/cache',[CommandController::class, 'clearRouteCache']);
+Route::get('/clear/view/cache', [CommandController::class, 'clearViewCache']);
+Route::get('/cache/config',     [CommandController::class, 'cacheConfig']);
+Route::get('/cache/routes',     [CommandController::class, 'cacheRoutes']);
+Route::get('/cache/views',      [CommandController::class, 'cacheViews']);
+Route::get('/cache/status',     [CommandController::class, 'cacheStatus']);
 
-// Route to get cache status
-Route::get('/cache/status', [CommandController::class, 'cacheStatus'])->name('cache.status');
+
+Route::get('/export-meta-data', [PageController::class, 'exportMetaData']);
 
 
 Route::get('/',         [PageController::class, 'home'])->name('home');

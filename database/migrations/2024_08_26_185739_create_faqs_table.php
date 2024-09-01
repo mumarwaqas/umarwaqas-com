@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contacts', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->text('message');
+        Schema::create('faqs', function (Blueprint $table) {
+            $table->id();                 // Primary key
+            $table->string('question');   // FAQ question
+            $table->text('answer');       // FAQ answer
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestamps();         // Created at and updated at timestamps
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('faqs');
     }
 };

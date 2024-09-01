@@ -75,37 +75,53 @@
         <h3 class="text-2xl font-medium text-dark dark:text-light lg:text-3xl"> Working With 50+ Brands ✨ Worldwide </h3>
         <div class="mt-8 grid grid-cols-[repeat(auto-fit,_minmax(60px,1fr))] gap-2 lg:grid-cols-[repeat(auto-fit,_minmax(80px,1fr))] lg:gap-4">
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/notion.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/notion.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/webflow.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/webflow.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/mico.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/mico.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/framer.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/framer.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/zeplin.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/zeplin.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/figma.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/figma.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/notion.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/notion.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/webflow.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/webflow.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/mico.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/mico.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/framer.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/framer.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/zeplin.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/zeplin.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/figma.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/figma.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/notion.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/notion.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/webflow.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/webflow.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/mico.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/mico.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
             <div class="grid h-16 place-content-center rounded-lg bg-light p-3 dark:bg-dark-2 lg:h-20 lg:rounded-2xl lg:p-4">
-                <img src="/assets/images/framer.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10"></div>
+                <img src="/assets/images/framer.svg" alt="" class="h-8 w-8 lg:h-10 lg:w-10">
+            </div>
         </div>
     </div>
     <div class="mt-10 lg:mt-14">
@@ -127,83 +143,31 @@
         <div class="mt-8">
             <div class="swiper review-carousel swiper-initialized swiper-horizontal swiper-backface-hidden">
                 <div class="swiper-wrapper" id="swiper-wrapper-a47a317e38ebec59" aria-live="polite">
-                    <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 3"
-                        data-swiper-slide-index="0" style="width: 368px; margin-right: 24px;">
+
+                    @foreach ($customers as $customer)
+                    <div class="swiper-slide swiper-slide-active" role="group" aria-label="{{ $loop->index }} / {{ count($customers) }}" data-swiper-slide-index="{{ $loop->index }}" style="width: 368px; margin-right: 24px;">
                         <div class="flex h-full flex-col justify-between rounded-lg bg-light p-6 dark:bg-dark-2">
                             <div class="flex flex-wrap items-center justify-between gap-4">
                                 <div class="flex flex-wrap items-center gap-1">
-                                    <img src="/assets/images/star-full.svg" alt="star" width="" height="" class="h-4 w-4 shrink-0">
-                                    <img src="/assets/images/star-full.svg" alt="star" width="" height="" class="h-4 w-4 shrink-0">
-                                    <img src="/assets/images/star-full.svg" alt="star" width="" height="" class="h-4 w-4 shrink-0">
-                                    <img src="/assets/images/star-full.svg" alt="star" width="" height="" class="h-4 w-4 shrink-0">
-                                    <img src="/assets/images/star-full.svg" alt="star" width="" height="" class="h-4 w-4 shrink-0">
-                                    </div>
-                                    <a href="#" class="inline-flex items-center gap-2 rounded bg-white px-2 py-1 text-sm leading-none text-primary transition hover:bg-primary hover:text-white dark:bg-black"><span>framer.com</span>
-                                        <svg
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 15" fill="none"
-                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        class="h-3.5 w-3.5 shrink-0">
+                                    @for ($i = 0; $i < 5; $i++)
+                                        <img src="/assets/images/star-full.svg" alt="star" width="" height="" class="h-4 w-4 shrink-0">
+                                    @endfor
+                                </div>
+                                <a href="#" class="inline-flex items-center gap-2 rounded bg-white px-2 py-1 text-sm leading-none text-primary transition hover:bg-primary hover:text-white dark:bg-black">
+                                    <span>{{ $customer['name'] }}</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 15" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 shrink-0">
                                         <path d="m9.917 4.583-5.834 5.834m.584-5.834h5.25v5.25"></path>
-                                    </svg></a>
+                                    </svg>
+                                </a>
                             </div>
-                            <blockquote class="mt-6 flex-1 text-lg"> "We've been using BentoFolio for over a year
-                                now, and I must say, it's been a game-changer for us. The user interface is
-                                intuitive and the feature. </blockquote>
-                            <p class="mt-8 font-medium"> Oliver Clain - <span class="font-normal text-muted">
-                                    Product Designer </span></p>
+                            <blockquote class="mt-6 flex-1 text-lg"> "{{ $customer['review'] }} "</blockquote>
+                            <p class="mt-8 font-medium">{{ $customer['name'] }} - <span class="font-normal text-muted"> {{ $customer['designation'] }} </span></p>
                         </div>
                     </div>
-                    <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 3"
-                        data-swiper-slide-index="1" style="width: 368px; margin-right: 24px;">
-                        <div class="flex h-full flex-col justify-between rounded-lg bg-light p-6 dark:bg-dark-2">
-                            <div class="flex flex-wrap items-center justify-between gap-4">
-                                <div class="flex flex-wrap items-center gap-1"><img
-                                        src="/assets/images/star-full.svg" alt="" class="h-4 w-4 shrink-0"><img
-                                        src="/assets/images/star-full.svg" alt="" class="h-4 w-4 shrink-0"><img
-                                        src="/assets/images/star-full.svg" alt="" class="h-4 w-4 shrink-0"><img
-                                        src="/assets/images/star-full.svg" alt="" class="h-4 w-4 shrink-0"><img
-                                        src="/assets/images/star-full.svg" alt="" class="h-4 w-4 shrink-0"></div><a
-                                    href="#"
-                                    class="inline-flex items-center gap-2 rounded bg-white px-2 py-1 text-sm leading-none text-primary transition hover:bg-primary hover:text-white dark:bg-black"><span>framer.com</span><svg
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 15" fill="none"
-                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        class="h-3.5 w-3.5 shrink-0">
-                                        <path d="m9.917 4.583-5.834 5.834m.584-5.834h5.25v5.25"></path>
-                                    </svg></a>
-                            </div>
-                            <blockquote class="mt-6 flex-1 text-lg"> "We've been using BentoFolio for over a year
-                                now, and I must say, it's been a game-changer for us. The user interface is
-                                intuitive and the feature. </blockquote>
-                            <p class="mt-8 font-medium"> Oliver Clain - <span class="font-normal text-muted">
-                                    Product Designer </span></p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide" role="group" aria-label="3 / 3" data-swiper-slide-index="2"
-                        style="width: 368px; margin-right: 24px;">
-                        <div class="flex h-full flex-col justify-between rounded-lg bg-light p-6 dark:bg-dark-2">
-                            <div class="flex flex-wrap items-center justify-between gap-4">
-                                <div class="flex flex-wrap items-center gap-1"><img
-                                        src="/assets/images/star-full.svg" alt="" class="h-4 w-4 shrink-0"><img
-                                        src="/assets/images/star-full.svg" alt="" class="h-4 w-4 shrink-0"><img
-                                        src="/assets/images/star-full.svg" alt="" class="h-4 w-4 shrink-0"><img
-                                        src="/assets/images/star-full.svg" alt="" class="h-4 w-4 shrink-0"><img
-                                        src="/assets/images/star-full.svg" alt="" class="h-4 w-4 shrink-0"></div><a
-                                    href="#"
-                                    class="inline-flex items-center gap-2 rounded bg-white px-2 py-1 text-sm leading-none text-primary transition hover:bg-primary hover:text-white dark:bg-black"><span>framer.com</span><svg
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 15" fill="none"
-                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        class="h-3.5 w-3.5 shrink-0">
-                                        <path d="m9.917 4.583-5.834 5.834m.584-5.834h5.25v5.25"></path>
-                                    </svg></a>
-                            </div>
-                            <blockquote class="mt-6 flex-1 text-lg"> "We've been using BentoFolio for over a year
-                                now, and I must say, it's been a game-changer for us. The user interface is
-                                intuitive and the feature. </blockquote>
-                            <p class="mt-8 font-medium"> Oliver Clain - <span class="font-normal text-muted">
-                                    Product Designer </span></p>
-                        </div>
-                    </div>
-                </div><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                    @endforeach
+                
+                </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>
         </div>
     </div>

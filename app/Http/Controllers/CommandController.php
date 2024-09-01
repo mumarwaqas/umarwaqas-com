@@ -21,7 +21,39 @@ class CommandController extends Controller
         dd($routes);
         // return view('routes.index', compact('routes'));
     }
-
+    public function writerSeed()
+    {
+        $exitCode = Artisan::call('db:seed --class=WriterSeeder');
+        $output = Artisan::output();
+         
+        if ($exitCode === 0) {
+            return response()->json(['message' => 'Writer Seed successfully.']);
+        } else {
+            return response()->json(['message' => 'Writer Seed failed.', 'error' => $output], 500);
+        }
+    }
+    public function orderSeeder()
+    {
+        $exitCode = Artisan::call('db:seed --class=OrderSeeder');
+        $output = Artisan::output();
+         
+        if ($exitCode === 0) {
+            return response()->json(['message' => 'Order Seed successfully.']);
+        } else {
+            return response()->json(['message' => 'Order Seed failed.', 'error' => $output], 500);
+        }
+    }
+    public function seed()
+    {
+        $exitCode = Artisan::call('db:seed');
+        $output = Artisan::output();
+         
+        if ($exitCode === 0) {
+            return response()->json(['message' => 'Seed successfully.']);
+        } else {
+            return response()->json(['message' => 'Seed failed.', 'error' => $output], 500);
+        }
+    }
     public function migrate()
     {
         $exitCode = Artisan::call('migrate:status');
@@ -45,32 +77,48 @@ class CommandController extends Controller
         $exitCode = Artisan::call('migrate:status');
         $output = Artisan::output();
         
-        if (strpos($output, 'No migrations found') !== false) {
-            return response()->json(['message' => 'No migrations to run.']);
+        if (strpos($output, 'No migrations Fresh found') !== false) {
+            return response()->json(['message' => 'No migrations Fresh to run.']);
         }
         
         $exitCode = Artisan::call('migrate:fresh');
         $output = Artisan::output();
         
         if ($exitCode === 0) {
-            return response()->json(['message' => 'Migrate successfully.']);
+            return response()->json(['message' => 'Migrate Fresh successfully.']);
         } else {
             return response()->json(['message' => 'Migration failed.', 'error' => $output], 500);
         }
     }
-
-    public function seed()
+    public function migrateInstall()
     {
-        $exitCode = Artisan::call('db:seed --class=ThemeOptionSeeder');
+        $exitCode = Artisan::call('migrate:install');
         $output = Artisan::output();
-                
+        
+        if (strpos($output, 'No migrations Install found') !== false) {
+            return response()->json(['message' => 'No migrations to install.']);
+        }
+        
+        $exitCode = Artisan::call('migrate:fresh');
+        $output = Artisan::output();
+        
         if ($exitCode === 0) {
-            return response()->json(['message' => 'Seed successfully.']);
+            return response()->json(['message' => 'Migrate Install successfully.']);
         } else {
-            return response()->json(['message' => 'Seed failed.', 'error' => $output], 500);
+            return response()->json(['message' => 'Migration failed.', 'error' => $output], 500);
         }
     }
-
+    public function migrateRllback()
+    {
+        $exitCode = Artisan::call('migrate:rollback');
+        $output = Artisan::output();
+        
+        if ($exitCode === 0) {
+            return response()->json(['message' => 'Migrate Rollback successfully.']);
+        } else {
+            return response()->json(['message' => 'Migrate Rollback failed.', 'error' => $output], 500);
+        }
+    }
     public function clearAllCache()
     {
         // Clear application cache
@@ -87,49 +135,41 @@ class CommandController extends Controller
     
         return response()->json(['message' => 'Cache cleared successfully.']);
     }
-    
     public function clearCache()
     {
         Artisan::call('cache:clear');
         return response()->json(['message' => 'Cache cleared successfully.']);
     }
-
     public function clearConfigCache()
     {
         Artisan::call('config:clear');
         return response()->json(['message' => 'Configuration cache cleared successfully.']);
     }
-
     public function clearRouteCache()
     {
         Artisan::call('route:clear');
         return response()->json(['message' => 'Route cache cleared successfully.']);
     }
-
     public function clearViewCache()
     {
         Artisan::call('view:clear');
         return response()->json(['message' => 'View cache cleared successfully.']);
     }
-
     public function cacheConfig()
     {
         Artisan::call('config:cache');
         return response()->json(['message' => 'Configuration cached successfully.']);
     }
-
     public function cacheRoutes()
     {
         Artisan::call('route:cache');
         return response()->json(['message' => 'Routes cached successfully.']);
     }
-
     public function cacheViews()
     {
         Artisan::call('view:cache');
         return response()->json(['message' => 'Views cached successfully.']);
     }
-
     public function cacheStatus()
     {
         $cache = Cache::get('cache_status');

@@ -6,9 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
-        {{-- Dynamic Meta Tags --}}
-        <title>@hasSection('title') @yield('title') | @endif {{ config('app.name', Lang::get('titles.app')) }}</title>
-        @yield('meta')
+        <!-- meta part start -->
+        @include('partials.meta')
+        {{-- @yield('meta') --}}
+        <!-- meta part end -->
         
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.jpg') }}">
         <!-- Place favicon.ico in the root directory -->
@@ -22,18 +23,19 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/swiper-bundle.min.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/venobox.min.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}" />
-        
         {{-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --}}
-        <!--
-            [if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-            [endif]
-        -->
-        {{-- @yield('template_linked_fonts')
+        {{-- 
+        [if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        [endif] 
+        --}}
+        {{--
+        @yield('template_linked_fonts')
         @vite(['resources/assets/sass/app.scss', 'resources/assets/js/app.js'])
-        @yield('template_linked_css') --}}
-        @yield('head')
+        @yield('template_linked_css') 
+        --}}
+        {{-- @yield('head') --}}
         @include('scripts.ga-analytics')
     </head>
     <body class="relative h-screen overflow-y-auto overflow-x-hidden bg-light text-dark dark:bg-dark-2 dark:text-light">

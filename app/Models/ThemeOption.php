@@ -17,6 +17,9 @@ class ThemeOption extends Model
         'option_value',
     ];
 
+    // Define the date format for soft deletes (optional)
+    protected $dates = ['deleted_at'];
+
     /**
      * Retrieve the option value by option_key.
      *

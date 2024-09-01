@@ -16,7 +16,7 @@ class ThemeOptionSeeder extends Seeder
     public function run()
     {
         $basics = [
-            "logo" => "logo.jpg",
+            "logo"=> "logo.jpg",
             "title" => "Umar <span class='text-primary'>Waqas</span>",        
             'name' => 'Umar Waqas',
             'fullname' => 'Umar Waqas',

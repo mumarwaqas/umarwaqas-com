@@ -1,6 +1,6 @@
 <div>
     <div class="aspect-4/5 overflow-hidden rounded-lg bg-light pt-4 text-center dark:bg-dark-2">
-    <img src="{{ asset('assets/images/' . $image) }}" alt="{{ $name }}" width="100" height="100" class="lazy inline-block h-full w-full scale-110 object-cover object-top" lazy="loaded">
+        <img src="{{ asset('assets/images/' . $image) }}" alt="{{ $name }}" width="100" height="100" class="lazy inline-block h-full w-full scale-110 object-cover object-top" lazy="loaded">
     </div>
     <div class="mt-6">
         <h3 class="text-2xl font-semibold dark:text-light">{{ $name }} 👋</h3>
@@ -29,7 +29,6 @@
             // Decode the JSON data
             $socialLinks = json_decode($socials, true);
             @endphp
-            
             @if (!empty($socialLinks))
                 @foreach($socialLinks as $social)
                     <a href="{{ $social['link'] }}" style="color: {{ $social['color'] }};" class="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-transparent text-center text-slate-600 transition hover:text-primary focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50 dark:border-transparent dark:bg-dark-2 dark:text-slate-500 dark:hover:text-primary">

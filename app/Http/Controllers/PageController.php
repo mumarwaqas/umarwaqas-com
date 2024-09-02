@@ -220,7 +220,7 @@ class PageController extends Controller
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ];
-        return view('pages.home')->with(['meta' => $meta])->with($data);
+        return view('pages.contact')->with(['meta' => $meta])->with($data);
     }
     public function store(Request $request)
     {

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id');                  // User ID
             $table->string('customer_no')->unique();    // Customer number
             $table->string('image')->nullable();        // Image URL or path
             $table->string('designation')->nullable();  // Designation Name

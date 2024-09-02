@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('title');                    // Page title
+            $table->string('user_id');                 // User ID
+            $table->string('title');                   // Page title
             $table->string('slug')->unique();          // URL slug
             $table->text('content')->nullable();       // Page content
-            
+            $table->string('image')->nullable();       // Page image            
+
             // SEO Fields
             $table->string('meta_title')->nullable();          // Meta title for SEO
             $table->text('meta_description')->nullable();      // Meta description for SEO

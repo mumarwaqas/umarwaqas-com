@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('writers', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id');
             $table->string('slug')->unique();
             $table->string('writer_no')->unique();
             $table->string('image')->nullable();

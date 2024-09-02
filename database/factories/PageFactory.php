@@ -20,6 +20,7 @@ class PageFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id'  => 1,
             'title' => $this->faker->sentence(),
             'slug' => $this->faker->slug(),
             'content' => $this->faker->paragraph(),
@@ -28,6 +29,7 @@ class PageFactory extends Factory
             'meta_keywords' => $this->faker->words(5, true),
             'canonical_url' => $this->faker->url(),
             'meta_robots' => $this->faker->randomElement(['index, follow', 'noindex, nofollow']),
+            'image' => $this->faker->imageUrl(640, 480, 'people'),
         ];
     }
 }

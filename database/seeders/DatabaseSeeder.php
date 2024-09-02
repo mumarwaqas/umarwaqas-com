@@ -19,21 +19,20 @@ class DatabaseSeeder extends Seeder
         $this->call(SampleSeeder::class); // php artisan db:seed --class=SampleSeeder
         $this->call(CustomerSeeder::class); // php artisan db:seed --class=CustomerSeeder
         $this->call(FaqSeeder::class); // php artisan db:seed --class=FaqSeeder
-        
+
+        // In a seeder, route, or controller method
+        \App\Models\User::factory()->create([
+            'name' => 'umarwaqas',
+            'email' => 'umarwaqas2007@gmail.com',
+            'email_verified_at' => now(), // This sets the email as verified
+            'password' => Hash::make('12345678'), // Use Hash::make to securely hash the password
+        ]);
+
         \App\Models\User::factory(10)->create();
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-
-        // In a seeder, route, or controller method
-
-        \App\Models\User::factory()->create([
-            'name' => 'admin',
-            'email' => 'info@allfreelancers.co.uk',
-            'email_verified_at' => now(), // This sets the email as verified
-            'password' => Hash::make('12345678'), // Use Hash::make to securely hash the password
-        ]);
 
     }
 }

@@ -28,6 +28,7 @@ class CustomerSeeder extends Seeder
 
             // Create customer using data from CSV
             Customer::create([
+                'user_id'     => $data['user_id'] ?? null,     // User ID CSV has this column
                 'customer_no' => $data['customer_no'] ?? null, // Assuming CSV has this column
                 'image'       => $data['image'] ?? null,       // Path to the image in CSV
                 'designation' => $data['designation'] ?? null, // Customer designation

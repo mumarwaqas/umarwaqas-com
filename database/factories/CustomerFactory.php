@@ -26,6 +26,7 @@ class CustomerFactory extends Factory
     public function definition()
     {
         return [
+            'user_id'     => 1,
             'customer_no' => $this->faker->unique()->numerify('DM-######'),   // Generate a unique customer number
             'image'       => $this->faker->imageUrl(640, 480, 'people'),      // Generate a random image URL
             'designation' => $this->faker->jobTitle,                          // Generate a random designation

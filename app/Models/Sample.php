@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Sample extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     // Specify the table if it's different from the default 'samples'
     protected $table = 'samples';
@@ -27,7 +26,4 @@ class Sample extends Model
 
     // If you want to use timestamps, make sure to include these lines
     public $timestamps = true;
-
-    // Define the date format for soft deletes (optional)
-    protected $dates = ['deleted_at'];
 }

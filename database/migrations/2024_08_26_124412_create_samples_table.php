@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('samples', function (Blueprint $table) {
             $table->id(); // Primary key
+            $table->string('user_id');        // User ID
             $table->string('slug')->unique(); // Slug of the sample
             $table->string('title'); // Title of the sample
             $table->string('academic_level'); // Academic level

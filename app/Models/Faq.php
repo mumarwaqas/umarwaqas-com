@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Faq extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     // Specify the table if it's different from the default 'samples'
     protected $table = 'faqs';
@@ -18,8 +17,4 @@ class Faq extends Model
         'question',
         'answer',
     ];
-
-    // Define the date format for soft deletes (optional)
-    protected $dates = ['deleted_at'];
-
 }

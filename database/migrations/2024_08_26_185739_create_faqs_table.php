@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();                 // Primary key
+            $table->string('user_id');    // User ID
             $table->string('question');   // FAQ question
             $table->text('answer');       // FAQ answer
             $table->softDeletes();

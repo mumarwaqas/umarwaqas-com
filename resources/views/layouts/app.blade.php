@@ -29,6 +29,31 @@
 
             <!-- Page Content -->
             <main>
+                @if($errors->any() || session('success') || session('error') )
+                <div class="py-12 pb-0">
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+                        <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+                            <div class="min-w-full overflow-x-auto">
+                                <!-- Display error messages -->
+                                @if($errors->any())
+                                    <x-error-message :messages="$errors->all()" />
+                                @endif
+                
+                                <!-- Display success messages -->
+                                @if(session('success'))
+                                    <x-success-message :messages="[session('success')]" />
+                                @endif
+                
+                                <!-- Display custom error messages -->
+                                @if(session('error'))
+                                    <x-error-message :messages="[session('error')]" />
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
+
                 {{ $slot }}
             </main>
         </div>

@@ -27,6 +27,7 @@ class WriterSeeder extends Seeder
             
             // Create a new Writer record in the database
             Writer::create([
+                'user_id' => $data['user_id'] ?? null,                    // User ID
                 'slug' => Str::slug($data['name']),                       // Generate a slug from the name
                 'writer_no' => $data['writer_no'] ?? null,                // Writer number from the CSV, or null if not provided
                 'name' => $data['name'] ?? null,                          // Writer's name

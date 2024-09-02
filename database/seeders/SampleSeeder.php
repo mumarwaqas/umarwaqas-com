@@ -25,6 +25,7 @@ class SampleSeeder extends Seeder
 
             // Insert data into the Sample table
             Sample::create([
+                'user_id'         => $data['user_id'] ?? null, // Set User ID
                 'slug'            => Str::slug($data['title']), // Generate a URL-friendly slug from the title
                 'title'           => $data['title'] ?? null,   // Set the title, default to null if not present
                 'academic_level'  => $data['academic_level'] ?? null, // Set the academic level, default to null if not present

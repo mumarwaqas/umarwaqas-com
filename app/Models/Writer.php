@@ -39,8 +39,23 @@ class Writer extends Model
 
     // Optionally, define any relationships, accessors, or mutators
 
-    // Define the date format for soft deletes (optional)
-    protected $dates = ['deleted_at'];
+    /**
+     * A Order belongs to a user.
+     *
+     * @return mixed
+     */
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class);
+    }
 
+    /**
+     * A Order belongs to a profile.
+     *
+     * @return mixed
+     */
+    public function profile()
+    {
+        return $this->belongsTo(\App\Models\Profile::class, 'user_id', 'user_id');
+    }
 }
-

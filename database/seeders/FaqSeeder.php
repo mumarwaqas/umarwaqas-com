@@ -27,6 +27,7 @@ class FaqSeeder extends Seeder
 
             // Insert the FAQ data into the database
             Faq::create([
+                'user_id' => $data['user_id'] ?? null,     // User ID field from the CSV
                 'question' => $data['question'] ?? null,   // Question field from the CSV
                 'answer'   => $data['answer'] ?? null,     // Answer field from the CSV
             ]);

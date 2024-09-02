@@ -22,6 +22,7 @@ class SampleFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => 1,
             'slug' => $this->faker->slug,
             'title' => $this->faker->sentence,
             'academic_level' => $this->faker->randomElement(['Undergraduate', 'Graduate', 'PhD']),

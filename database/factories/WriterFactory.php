@@ -25,6 +25,7 @@ class WriterFactory extends Factory
         ];
 
         return [
+            'user_id' => 1,
             'slug' => $this->faker->slug,
             'writer_no' => $this->faker->unique()->numerify('DM-######'),
             'image' => $this->faker->imageUrl(),

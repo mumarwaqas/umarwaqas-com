@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Models\Customer;
 use App\Models\Faq;
+use App\Models\Post;
 use App\Models\Page;
 use App\Models\ThemeOption;
 
@@ -56,7 +57,7 @@ class WebPageController extends Controller
                 'og' => [
                     'type' => 'website',
                     'locale' => 'en_PK',
-                    'site_name' => 'Umar Waqas',
+                    'site_name' => config('app.name'),
                     'url' => url()->current(),
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
@@ -93,7 +94,7 @@ class WebPageController extends Controller
                 'og' => [
                     'type' => 'website',
                     'locale' => 'en_PK',
-                    'site_name' => 'Umar Waqas',
+                    'site_name' => config('app.name'),
                     'url' => url()->current(),
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
@@ -120,7 +121,7 @@ class WebPageController extends Controller
                 'og' => [
                     'type' => 'website',
                     'locale' => 'en_PK',
-                    'site_name' => 'Umar Waqas',
+                    'site_name' => config('app.name'),
                     'url' => url()->current(),
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
@@ -147,7 +148,7 @@ class WebPageController extends Controller
                 'og' => [
                     'type' => 'website',
                     'locale' => 'en_PK',
-                    'site_name' => 'Umar Waqas',
+                    'site_name' => config('app.name'),
                     'url' => url()->current(),
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
@@ -162,9 +163,12 @@ class WebPageController extends Controller
             ];
         return view('webpage.work')->with(['meta' => $meta]);
     }
-    public function blog()
+
+    public function posts()
     {
-        $page = Page::where('slug', 'blog')->firstOrFail();
+        $posts = Post::latest()->with(['user', 'profile', 'category'])->paginate(6);
+
+        $page = Page::where('slug', 'blogs')->firstOrFail();
         $meta = [
                 'title' => $page->meta_title,
                 'description' => $page->meta_description,
@@ -174,7 +178,7 @@ class WebPageController extends Controller
                 'og' => [
                     'type' => 'website',
                     'locale' => 'en_PK',
-                    'site_name' => 'Umar Waqas',
+                    'site_name' => config('app.name'),
                     'url' => url()->current(),
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
@@ -187,8 +191,122 @@ class WebPageController extends Controller
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ];
-        return view('webpage.blog')->with(['meta' => $meta]);
+        return view('webpage.posts')->with(['meta' => $meta])->with(['posts' => $posts]);
+
     }
+    public function post($slug)
+    {
+        // Find the post by slug
+        $post = Post::where('slug', $slug)->with(['user', 'profile', 'category'])->first();
+        $relatedPosts = Post::latest()->with(['user', 'profile', 'category'])->limit(3)->get();
+
+        $meta = [
+                'title' => $post->meta_title,
+                'description' => $post->meta_description,
+                'keywords' => $post->meta_keywords,
+                'canonical_url' => url()->current(),
+                'robots' => $post->meta_robots,
+                'og' => [
+                    'type' => 'website',
+                    'locale' => 'en_PK',
+                    'site_name' => config('app.name'),
+                    'url' => url()->current(),
+                    'image' => $post->image ? asset($post->image) : asset('assets/images/logo.webp'),
+                    'image_type' => 'image/jpg',
+                    'description' => $post->meta_description,
+                ],
+                'twitter' => [
+                    'title' => $post->meta_title,
+                    'card' => 'summary_large_image',
+                    'description' => $post->meta_description,
+                    'image' => $post->image ? asset($post->image) : asset('assets/images/logo.webp'),
+                ]
+            ];
+        // Pass the writer to the view
+        // return view('webpage.home')->with(['meta' => $meta])->with(['writers' => $writers])->with(['samples' => $samples])->with(['customers' => $customers])->with(['faqs' => $faqs]);
+        return view('webpage.post')->with(['meta' => $meta])->with(['post' => $post])->with(['relatedPosts' => $relatedPosts]);
+    }
+    public function category($slug)
+    {
+        // Find the post by slug
+        $category = Category::where('slug', $slug)->first();
+        $posts = $category->posts()->with(['user', 'profile', 'category'])->paginate(6);
+        // $post = Post::where('slug', $slug)->with(['user', 'profile', 'category'])->first();
+
+
+        // Find the writer by writer_no
+        // $writers = Writer::orderBy('id', 'desc')->limit(5)->get();
+        // $samples = Sample::orderBy('id', 'desc')->limit(10)->get();
+        // $customers = Customer::orderBy('id', 'desc')->limit(5)->get();
+        // $faqs = Faq::orderBy('id', 'desc')->limit(10)->get();
+
+        $meta = [
+                'page_title' => $category->meta_title,
+                'title' => $category->meta_title,
+                'description' => $category->meta_description,
+                'keywords' => $category->meta_keywords,
+                'canonical_url' => url()->current(),
+                'robots' => $category->meta_robots,
+                'og' => [
+                    'type' => 'website',
+                    'locale' => 'en_PK',
+                    'site_name' => config('app.name'),
+                    'url' => url()->current(),
+                    'image' => $category->image ? asset($category->image) : asset('assets/images/logo.webp'),
+                    'image_type' => 'image/jpg',
+                    'description' => $category->meta_description,
+                ],
+                'twitter' => [
+                    'title' => $category->meta_title,
+                    'card' => 'summary_large_image',
+                    'description' => $category->meta_description,
+                    'image' => $category->image ? asset($category->image) : asset('assets/images/logo.webp'),
+                ]
+            ];
+        // Pass the writer to the view
+        // return view('webpage.home')->with(['meta' => $meta])->with(['writers' => $writers])->with(['samples' => $samples])->with(['customers' => $customers])->with(['faqs' => $faqs]);
+        return view('webpage.category-posts')->with(['meta' => $meta])->with(['category' => $category])->with(['posts' => $posts]);
+    }
+    public function author($slug)
+    {
+        // Find the post by slug
+        $author = User::where('id', $slug)->first();
+        $posts = Post::where('user_id', $slug)->with(['user', 'profile', 'category'])->paginate(6);
+
+        // Find the writer by writer_no
+        // $writers = Writer::orderBy('id', 'desc')->limit(5)->get();
+        // $samples = Sample::orderBy('id', 'desc')->limit(10)->get();
+        // $customers = Customer::orderBy('id', 'desc')->limit(5)->get();
+        // $faqs = Faq::orderBy('id', 'desc')->limit(10)->get();
+
+        $meta = [
+                'meta_title' => $author->name,
+                'title' => $author->name,
+                'description' => $author->name,
+                'keywords' => $author->name,
+                'canonical_url' => url()->current(),
+                'robots' => $author->name,
+                'og' => [
+                    'type' => 'website',
+                    'locale' => 'en_PK',
+                    'site_name' => config('app.name'),
+                    'url' => url()->current(),
+                    'image' => $author->name ? asset($author->name) : asset('assets/images/logo.webp'),
+                    'image_type' => 'image/jpg',
+                    'description' => $author->name,
+                ],
+                'twitter' => [
+                    'title' => $author->name,
+                    'card' => 'summary_large_image',
+                    'description' => $author->name,
+                    'image' => $author->name ? asset($author->name) : asset('assets/images/logo.webp'),
+                ]
+            ];
+        // Pass the writer to the view
+        // return view('webpage.home')->with(['meta' => $meta])->with(['writers' => $writers])->with(['samples' => $samples])->with(['customers' => $customers])->with(['faqs' => $faqs]);
+        return view('webpage.author-posts')->with(['meta' => $meta])->with(['author' => $author])->with(['posts' => $posts]);
+    }
+
     public function contact()
     {
         $data['email']    = ThemeOption::getOptionByKey('email');
@@ -206,7 +324,7 @@ class WebPageController extends Controller
                 'og' => [
                     'type' => 'website',
                     'locale' => 'en_PK',
-                    'site_name' => 'Umar Waqas',
+                    'site_name' => config('app.name'),
                     'url' => url()->current(),
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',

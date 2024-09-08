@@ -26,7 +26,7 @@ class FaqFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'  => 1,                          // User ID
+            'user_id' => 1,
             'question' => $this->faker->sentence(),   // Random FAQ question
             'answer'   => $this->faker->paragraph(),  // Random FAQ answer
         ];

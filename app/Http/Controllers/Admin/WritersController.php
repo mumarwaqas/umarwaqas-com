@@ -43,6 +43,7 @@ class WritersController extends Controller
             'success_rate'  => 'nullable|numeric|between:0,100',
             'competences'   => 'nullable|string',
             'online'        => 'nullable|boolean',
+            'user_id'       => 'required|exists:users,id',
         ]);
 
         $writer = new Writer($request->all());
@@ -123,6 +124,7 @@ class WritersController extends Controller
             'success_rate'  => 'nullable|numeric|between:0,100',
             'competences'   => 'nullable|string',
             'online'        => 'nullable|boolean',
+            'user_id'       => 'required|exists:users,id',
         ]);
     
 

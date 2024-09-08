@@ -17,4 +17,15 @@ class Faq extends Model
         'question',
         'answer',
     ];
+
+    // Define the date format for soft deletes (optional)
+    protected $dates = ['deleted_at'];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = ['deleted_at'];
+
 }

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('writers', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('slug')->unique();
             $table->string('writer_no')->unique();
             $table->string('image')->nullable();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->longText('about')->nullable();
             $table->string('education')->nullable();
             $table->string('experience')->nullable();

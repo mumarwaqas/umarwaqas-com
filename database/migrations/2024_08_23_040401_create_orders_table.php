@@ -15,7 +15,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('order_no');
             $table->string('source')->nullable();
             $table->string('academic_level', 255)->nullable();
@@ -37,7 +37,7 @@ class CreateOrdersTable extends Migration
             $table->string('ai_file', 500)->nullable();
             $table->string('plagiarism_file', 500)->nullable();
             $table->string('grammarly_file', 500)->nullable();
-            $table->string('attachment', 2000)->nullable();
+            $table->string('attachment', 255)->nullable();
             $table->string('coupon_code')->nullable();
             $table->string('actual_price', 255)->nullable();
             $table->string('discounted_price', 255)->nullable();

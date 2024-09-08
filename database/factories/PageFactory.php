@@ -20,16 +20,18 @@ class PageFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id'  => 1,
+            'user_id' => $this->faker->numberBetween(1, 11),
             'title' => $this->faker->sentence(),
             'slug' => $this->faker->slug(),
+            'page_title' => $this->faker->sentence(),
+            'image' => $this->faker->imageUrl(),
+            'page_type' => $this->faker->randomElement(['service', 'page']),
             'content' => $this->faker->paragraph(),
             'meta_title' => $this->faker->sentence(),
             'meta_description' => $this->faker->text(150),
             'meta_keywords' => $this->faker->words(5, true),
             'canonical_url' => $this->faker->url(),
             'meta_robots' => $this->faker->randomElement(['index, follow', 'noindex, nofollow']),
-            'image' => $this->faker->imageUrl(640, 480, 'people'),
         ];
     }
 }

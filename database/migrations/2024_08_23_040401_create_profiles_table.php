@@ -25,7 +25,6 @@ class CreateProfilesTable extends Migration
             $table->string('github_username')->nullable();
             $table->string('avatar')->nullable();
             $table->boolean('avatar_status')->default(0);
-            $table->softDeletes();
             $table->timestamps();
 
             //Relationships

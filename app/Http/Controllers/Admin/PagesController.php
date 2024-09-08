@@ -31,18 +31,23 @@ class PagesController extends Controller
     {
         $request->validate([
             // Page Fields
-            'title'          => 'required|string|max:255',                // Page title, max length of 255 characters
-            'slug'           => 'required|string|unique:pages,slug',     // URL slug, unique in the 'pages' table
-            'image'          => 'nullable|image|mimes:jpeg,png,jpg,webp,gif|max:2048', // Image file, optional
-            'content'        => 'nullable|string',                         // Page content, optional
+            'title'          => 'required|string|max:255',                // Page title, required, maximum length of 255 characters
+            'slug'           => 'required|string|unique:pages,slug',     // URL slug, required, unique in the 'pages' table
+            'image'          => 'nullable|image|mimes:jpeg,png,jpg,webp,gif|max:2048', // Image file, optional, accepts specific formats, maximum size 2MB
+            'content'        => 'required|string',                         // Page content, required
         
             // SEO Fields
-            'meta_title'     => 'nullable|string|max:255',                // Meta title for SEO, optional, max length of 255 characters
-            'meta_description'=> 'nullable|string|max:500',               // Meta description for SEO, optional, max length of 500 characters
-            'meta_keywords'  => 'nullable|string|max:255',                // Meta keywords for SEO, optional, max length of 255 characters
-            'canonical_url'  => 'nullable|url',                           // Canonical URL for SEO, optional, must be a valid URL
-            'meta_robots'    => 'nullable|string|in:index,follow,noindex,nofollow', // Meta robots tag, optional, must be one of the specified values
-        ]);        
+            'meta_title'       => 'nullable|string|min:4|max:255',        // Meta title, optional, minimum length of 4, maximum length of 255 characters
+            'meta_description' => 'nullable|string|min:4|max:500',        // Meta description, optional, minimum length of 4, maximum length of 500 characters
+            'meta_keywords'    => 'nullable|string|min:4|max:255',        // Meta keywords, optional, minimum length of 4, maximum length of 255 characters
+            'canonical_url'    => 'nullable|url',                         // Canonical URL, optional, must be a valid URL
+            'meta_robots'      => [
+                'required',
+                'string',
+                'regex:/^(index|noindex)(,(follow|nofollow))*$/',         // Meta robots, required, must be a string matching 'index', 'noindex', 'follow', or 'nofollow'
+            ],
+            'user_id'           => 'required|exists:users,id',            // User ID, required, must exist in the 'users' table
+        ]);
 
         $page = new Page($request->all());
 
@@ -78,7 +83,7 @@ class PagesController extends Controller
             $imagePath = $uploadPath . '/' . $fileName;
 
             $page->image  = $imagePath;
-    
+
         } else {
             // Default image if none uploaded
         }
@@ -88,7 +93,6 @@ class PagesController extends Controller
         // Flash message and redirect
         session()->flash('success', 'Page added successfully.');
         return redirect()->route('pages.index');
-
     }
     // Display the specified page
     public function show(Request $request, $id)
@@ -111,17 +115,22 @@ class PagesController extends Controller
         // Validate the request data
         $request->validate([
             // Page Fields
-            'title'          => 'required|string|max:255',                // Page title, max length of 255 characters
-            'slug'           => 'required|string|unique:pages,slug,' . $page->id,     // URL slug, unique in the 'pages' table
-            'image'          => 'nullable|image|mimes:jpeg,png,jpg,webp,gif|max:2048', // Image file, optional
-            'content'        => 'nullable|string',                         // Page content, optional
+            'title'          => 'required|string|max:255',                // Page title, required, maximum length of 255 characters
+            'slug'           => 'required|string|unique:pages,slug,' . $page->id,     // URL slug, required, unique in the 'pages' table
+            'image'          => 'nullable|image|mimes:jpeg,png,jpg,webp,gif|max:2048', // Image file, optional, accepts specific formats, maximum size 2MB
+            'content'        => 'required|string',                         // Page content, required
         
             // SEO Fields
-            'meta_title'     => 'nullable|string|max:255',                // Meta title for SEO, optional, max length of 255 characters
-            'meta_description'=> 'nullable|string|max:500',               // Meta description for SEO, optional, max length of 500 characters
-            'meta_keywords'  => 'nullable|string|max:255',                // Meta keywords for SEO, optional, max length of 255 characters
-            'canonical_url'  => 'nullable|url',                           // Canonical URL for SEO, optional, must be a valid URL
-            'meta_robots'    => 'nullable|string|in:index,follow,noindex,nofollow', // Meta robots tag, optional, must be one of the specified values
+            'meta_title'       => 'nullable|string|min:4|max:255',        // Meta title, optional, minimum length of 4, maximum length of 255 characters
+            'meta_description' => 'nullable|string|min:4|max:500',        // Meta description, optional, minimum length of 4, maximum length of 500 characters
+            'meta_keywords'    => 'nullable|string|min:4|max:255',        // Meta keywords, optional, minimum length of 4, maximum length of 255 characters
+            'canonical_url'    => 'nullable|url',                         // Canonical URL, optional, must be a valid URL
+            'meta_robots'      => [
+                'required',
+                'string',
+                'regex:/^(index|noindex)(,(follow|nofollow))*$/',         // Meta robots, required, must be a string matching 'index', 'noindex', 'follow', or 'nofollow'
+            ],
+            'user_id'           => 'required|exists:users,id',            // User ID, required, must exist in the 'users' table
         ]);
     
 

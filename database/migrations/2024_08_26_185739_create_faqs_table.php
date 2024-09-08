@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();                 // Primary key
-            $table->string('user_id');    // User ID
-            $table->string('question');   // FAQ question
-            $table->text('answer');       // FAQ answer
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('question')->nullable();   // FAQ question
+            $table->string('answer')->nullable();     // FAQ answer
             $table->softDeletes();
             $table->timestamps();         // Created at and updated at timestamps
         });

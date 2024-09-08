@@ -13,17 +13,26 @@ return new class extends Migration
     {
         Schema::create('samples', function (Blueprint $table) {
             $table->id(); // Primary key
-            $table->string('user_id');        // User ID
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('slug')->unique(); // Slug of the sample
-            $table->string('title'); // Title of the sample
-            $table->string('academic_level'); // Academic level
-            $table->string('type_of_paper'); // Type of paper
-            $table->string('citation_style'); // Citation style
-            $table->unsignedInteger('number_of_words'); // Number of words
-            $table->unsignedInteger('number_of_pages'); // Number of pages
+            $table->string('title')->nullable(); // Title of the sample
+            $table->longText('content')->nullable(); // Title of the content
+            $table->string('academic_level')->nullable(); // Academic level
+            $table->string('type_of_paper')->nullable(); // Type of paper
+            $table->string('citation_style')->nullable(); // Citation style
+            $table->unsignedInteger('number_of_words')->nullable(); // Number of words
+            $table->unsignedInteger('number_of_pages')->nullable(); // Number of pages
             $table->string('image'); // URL of the image
-            $table->softDeletes();
-            $table->timestamps(); // Created at and updated at timestamps
+
+            // SEO Fields
+            $table->string('meta_title')->nullable();          // Meta title for SEO
+            $table->string('meta_description')->nullable();    // Meta description for SEO
+            $table->string('meta_keywords')->nullable();       // Meta keywords for SEO
+            $table->string('canonical_url')->nullable();       // Canonical URL for SEO
+            $table->string('meta_robots')->nullable();         // Robots tag (index/noindex, follow/nofollow)
+            
+            $table->timestamps();                      // Created and updated timestamps
+            $table->softDeletes();                    // Soft delete column
         });
     }
 

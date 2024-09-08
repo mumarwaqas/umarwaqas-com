@@ -57,5 +57,7 @@
                 {{ $slot }}
             </main>
         </div>
+    <!-- Load scripts at the end of the body -->
+    @stack('scripts')
     </body>
 </html>

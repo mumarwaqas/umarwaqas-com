@@ -14,6 +14,7 @@ class Page extends Model
 
     // Specify which attributes are mass assignable
     protected $fillable = [
+        'user_id',
         'title',
         'slug',
         'content',
@@ -26,6 +27,13 @@ class Page extends Model
 
     // Define the date format for soft deletes (optional)
     protected $dates = ['deleted_at'];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = ['deleted_at'];
 
     /**
      * A Order belongs to a user.
@@ -46,5 +54,4 @@ class Page extends Model
     {
         return $this->belongsTo(\App\Models\Profile::class, 'user_id', 'user_id');
     }
-
 }

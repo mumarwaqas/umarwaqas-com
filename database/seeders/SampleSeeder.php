@@ -23,17 +23,31 @@ class SampleSeeder extends Seeder
         foreach ($csvData as $row) {
             $data = array_combine($header, $row);
 
-            // Insert data into the Sample table
             Sample::create([
-                'user_id'         => $data['user_id'] ?? null, // Set User ID
-                'slug'            => Str::slug($data['title']), // Generate a URL-friendly slug from the title
-                'title'           => $data['title'] ?? null,   // Set the title, default to null if not present
-                'academic_level'  => $data['academic_level'] ?? null, // Set the academic level, default to null if not present
-                'type_of_paper'   => $data['type_of_paper'] ?? null, // Set the type of paper, default to null if not present
-                'citation_style'  => $data['citation_style'] ?? null, // Set the citation style, default to null if not present
-                'number_of_words' => $data['number_of_words'] ?? null, // Set the number of words, default to null if not present
-                'number_of_pages' => $data['number_of_pages'] ?? null, // Set the number of pages, default to null if not present
-                'image'           => $data['image'] ?? null, // Set the image URL, default to null if not present
+                // User and Slug Information
+                'user_id' => $data['user_id'] ?? null,                  // User ID (optional, might be null)
+                'slug'    => Str::slug($data['title']) ?? null,         // Automatically generate slug from title
+            
+                // Basic Information
+                'title'       => $data['title'] ?? null,                // Title of the content
+                'content'     => $data['content'] ?? null,              // Content description
+            
+                // Academic Information
+                'academic_level'   => $data['academic_level'] ?? null,  // Academic level (e.g., High School, College)
+                'type_of_paper'    => $data['type_of_paper'] ?? null,   // Type of paper (e.g., Essay, Thesis)
+                'citation_style'   => $data['citation_style'] ?? null,  // Citation style (e.g., APA, MLA)
+                'number_of_words'  => $data['number_of_words'] ?? null, // Number of words in the paper
+                'number_of_pages'  => $data['number_of_pages'] ?? null, // Number of pages
+            
+                // Image Information
+                'image' => $data['image'],                              // Image (assuming it's required)
+            
+                // SEO Information
+                'meta_title'       => $data['meta_title'] ?? null,          // Meta title for SEO
+                'meta_description' => $data['meta_description'] ?? null,    // Meta description for SEO
+                'meta_keywords'    => $data['meta_keywords'] ?? null,       // Meta keywords for SEO
+                'canonical_url'    => $data['canonical_url'] ?? null,       // Canonical URL to avoid duplicate content
+                'meta_robots'      => $data['meta_robots'] ?? null          // Meta robots (indexing preferences)
             ]);
         }
 

@@ -15,6 +15,7 @@ class Writer extends Model
 
     // Specify the attributes that are mass assignable
     protected $fillable = [
+        'user_id',
         'slug',
         'writer_no',
         'image',
@@ -29,6 +30,16 @@ class Writer extends Model
         'competences',
         'online',
     ];
+
+    // Define the date format for soft deletes (optional)
+    protected $dates = ['deleted_at'];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = ['deleted_at'];
 
     // Specify any attributes that should be cast to native types
     // protected $casts = [

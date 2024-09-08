@@ -26,10 +26,13 @@ class PageSeeder extends Seeder
 
             // Insert the FAQ data into the database
             Page::create([
-                'user_id'          => $data['user_id'] ?? null,             // User ID field from the CSV
+                'user_id'          => $data['user_id'] ?? null,
+                'page_title'       => $data['page_title'] ?? null,          // Page Title field from the CSV
                 'title'            => $data['title'] ?? null,               // Title field from the CSV
                 'slug'             => $data['slug'] ?? null,                // Slug field from the CSV
+                'image'            => $data['image'] ?? null,               // Image field from the CSV
                 'content'          => $data['content'] ?? null,             // Content field from the CSV
+                'page_type'        => $data['page_type'] ?? null,           // Page Type field from the CSV
                 'meta_title'       => $data['meta_title'] ?? null,          // Meta title field from the CSV
                 'meta_description' => $data['meta_description'] ?? null,    // Meta description field from the CSV
                 'meta_keywords'    => $data['meta_keywords'] ?? null,       // Meta keywords field from the CSV

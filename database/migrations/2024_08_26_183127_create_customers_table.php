@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');                  // User ID
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('customer_no')->unique();    // Customer number
             $table->string('image')->nullable();        // Image URL or path
-            $table->string('designation')->nullable();  // Designation Name
             $table->string('name')->nullable();         // Customer name
+            $table->longText('review')->nullable();     // Review text
+            $table->longText('text')->nullable();       // Review text
             $table->longText('about')->nullable();      // About information
+            $table->string('no_of_review')->nullable(); // Review text
             $table->string('rating')->nullable();       // Rating with two decimal points
-            $table->string('review')->nullable();       // Review text
             $table->string('date')->nullable();         // Date field
             $table->softDeletes();                      // Deleted timestamps
             $table->timestamps();                       // Created and updated timestamps        

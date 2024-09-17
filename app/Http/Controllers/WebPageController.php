@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Models\Customer;
 use App\Models\Faq;
+use App\Models\User;
 use App\Models\Post;
+use App\Models\Category;
 use App\Models\Page;
 use App\Models\ThemeOption;
 
@@ -224,7 +226,7 @@ class WebPageController extends Controller
             ];
         // Pass the writer to the view
         // return view('webpage.home')->with(['meta' => $meta])->with(['writers' => $writers])->with(['samples' => $samples])->with(['customers' => $customers])->with(['faqs' => $faqs]);
-        return view('webpage.post')->with(['meta' => $meta])->with(['post' => $post])->with(['relatedPosts' => $relatedPosts]);
+        return view('webpage.single-post')->with(['meta' => $meta])->with(['post' => $post])->with(['relatedPosts' => $relatedPosts]);
     }
     public function category($slug)
     {

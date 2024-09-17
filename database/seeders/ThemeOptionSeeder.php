@@ -63,7 +63,7 @@ class ThemeOptionSeeder extends Seeder
                 [
                     "company" => "OutsourceNZ",
                     "position" => "Senior PHP Developer | WordPress Developer",
-                    "logo" => "https://media.licdn.com/dms/image/C4D0BAQH0xYnbQaLbFg/company-logo_100_100/0/1655333288009/outsourcenz_logo?e=1728518400&v=beta&t=9nUt9oVqWwDNuAKDVF-feNPPEcYh9aavsNWBtCrbdW8",
+                    "logo" => "outsourcenz.jpeg",
                     "website" => "",
                     "startDate" => "2022-04-01",
                     "summary" => "Responsibilities: •\tDeveloping themes and plugins for WordPress requires a good understanding of the WordPress coding standards, as well as how to use the WordPress API to interact with the core functionality of the CMS. •\tA step form is a type of form that guides the user through a series of steps or pages, typically to gather information or input from the user. Step forms can be useful in a variety of contexts, such as e-commerce checkout processes, account creation forms, or survey forms. •\tIntegrating a third-party API into a WordPress theme typically involves using the API's documentation to learn how to send and receive data to and from the API, and then writing custom code in PHP or JavaScript to interact with the API from within the WordPress site. Radio and product APIs can be used to provide streaming audio or video content, or to integrate product catalogs or inventory information into an e-commerce site. •\tImporting products from a third-party API into WooCommerce typically involves using the API's documentation to learn how to access and retrieve the necessary product data, and then writing custom code in PHP to create and update the products in the WooCommerce database. •\tA Loan Calculator plugin in WordPress would typically be used to help users calculate a loan, such as the interest rate, repayment schedule, and total amount owed. Developing a loan plugin in WordPress would require a strong understanding of PHP and mathematics. •\tModifying WooCommerce to fulfill the client's requirements typically involves writing custom code in PHP to add or modify existing functionality, as well as working with the site's design and layout to ensure that the changes are visually appealing and effective.",
@@ -73,7 +73,7 @@ class ThemeOptionSeeder extends Seeder
                 [
                     "company" => "Inovedia Technologies",
                     "position" => "Senior PHP Developer | WordPress Developer",
-                    "logo" => "https://media.licdn.com/dms/image/C560BAQGser-efMHIww/company-logo_100_100/0/1631324670445?e=1728518400&v=beta&t=-17hCEsA3GNhwv5NwkenCRPk5xCHHrrlco575DiqnmM",
+                    "logo" => "inovedia.jpeg",
                     "website" => "",
                     "startDate" => "2021-03-01",
                     "summary" => "",
@@ -83,7 +83,7 @@ class ThemeOptionSeeder extends Seeder
                 [
                     "company" => "Rays Globals",
                     "position" => "Senior PHP Developer | WordPress Developer",
-                    "logo" => "https://media.licdn.com/dms/image/C4E0BAQFcl4UoH7yk4w/company-logo_100_100/0/1647374879984?e=1728518400&v=beta&t=kDDKbSWrvDle8nFx36TPWeeeRWMJ5TEfjXlLE7K43dw",
+                    "logo" => "raysglobals.jpeg",
                     "website" => "",
                     "startDate" => "2018-05-01",
                     "summary" => "Responsibilities: •\tThis involves planning and designing the overall structure and layout of a website, including the pages, menus, content, and user experience. •\tThis involves building a website that allows users to search for and book hotels, flights, tours, and activities, using both WordPress and CodeIgniter to create the front-end and back-end functionality. •\tThis involves building a news website that provides timely and relevant news and information to its audience, using CodeIgniter to manage the content, user accounts, and administrative functions. •\tThis involves using WordPress to create an online store, including features such as product listings, shopping carts, payment processing, and order management. •\tThis involves customizing a WordPress theme to meet the client's branding, design, and functionality requirements, using HTML, CSS, and PHP code. •\tThis involves using CodeIgniter and Laravel, two popular PHP frameworks, to build websites and web applications, including features such as databases, user authentication, and dynamic content. •\tThis involves designing and coding custom HTML email templates for newsletters and other email communications, using tools such as Adobe Photoshop and Dreamweaver.",
@@ -93,7 +93,7 @@ class ThemeOptionSeeder extends Seeder
                 [
                     "company" => "Fast Link Solution",
                     "position" => "Senior Web Developer | CodeIgniter Developer",
-                    "logo" => "https://dummyimage.com/100x100/990/fff&text=FLS",
+                    "logo" => "FLS.jpeg",
                     "website" => "",
                     "startDate" => "2014-08-01",
                     "summary" => "Responsibilities: •\tMaintained the current website and added more features •\tUpdated website content on a daily basis •\tRedesigned sections of the website to ensure a more attractive and user friendly experience •\tDesigned and developed Restful style web services •\tCreated a Content Management System (CMS) •\tCreated custom HTML emails template for clients newsletters •\tDesigned custom graphics",
@@ -124,73 +124,73 @@ class ThemeOptionSeeder extends Seeder
             'skills' => json_encode([
                 [
                     "name" => "HTML",
-                    "logo" => "https://img.icons8.com/?size=100&id=20909&format=png&color=000000",
+                    "logo" => "HTML.png",
                     "level" => "",
                     "keywords" => []
                 ],
                 [
                     "name" => "CSS",
-                    "logo" => "https://img.icons8.com/?size=100&id=7gdY5qNXaKC0&format=png&color=000000",
+                    "logo" => "CSS.png",
                     "level" => "",
                     "keywords" => []
                 ],
                 [
                     "name" => "JavaScript",
-                    "logo" => "https://img.icons8.com/?size=100&id=52wKEsyyo49O&format=png&color=000000",
+                    "logo" => "JavaScript.png",
                     "level" => "",
                     "keywords" => []
                 ],
                 [
                     "name" => "jQuery",
-                    "logo" => "https://img.icons8.com/?size=100&id=40253&format=png&color=000000",
+                    "logo" => "jQuery.png",
                     "level" => "",
                     "keywords" => []
                 ],
                 [
                     "name" => "MySQL",
-                    "logo" => "https://img.icons8.com/?size=100&id=UFXRpPFebwa2&format=png&color=000000",
+                    "logo" => "MySQL.png",
                     "level" => "",
                     "keywords" => []
                 ],
                 [
                     "name" => "PHP",
-                    "logo" => "https://img.icons8.com/?size=100&id=fAMVO_fuoOuC&format=png&color=000000",
+                    "logo" => "PHP.png",
                     "level" => "",
                     "keywords" => []
                 ],
                 [
                     "name" => "Bootstrap",
-                    "logo" => "https://img.icons8.com/?size=100&id=84710&format=png&color=000000",
+                    "logo" => "Bootstrap.png",
                     "level" => "",
                     "keywords" => []
                 ],
                 [
                     "name" => "Vue.js",
-                    "logo" => "https://img.icons8.com/?size=100&id=BUnExfsRs3CW&format=png&color=000000",
+                    "logo" => "Vue.js.png",
                     "level" => "",
                     "keywords" => []
                 ],
                 [
                     "name" => "Node.js",
-                    "logo" => "https://img.icons8.com/?size=100&id=hsPbhkOH4FMe&format=png&color=000000",
+                    "logo" => "Node.js.png",
                     "level" => "",
                     "keywords" => []
                 ],
                 [
                     "name" => "CodeIgniter",
-                    "logo" => "https://img.icons8.com/?size=100&id=YIjlZlyqtVvH&format=png&color=FA5252",
+                    "logo" => "CodeIgniter.png",
                     "level" => "",
                     "keywords" => []
                 ],
                 [
                     "name" => "Laravel",
-                    "logo" => "https://img.icons8.com/?size=100&id=lRjcvhvtR81o&format=png&color=000000",
+                    "logo" => "Laravel.png",
                     "level" => "",
                     "keywords" => []
                 ],
                 [
                     "name" => "WordPress",
-                    "logo" => "https://img.icons8.com/?size=100&id=13664&format=png&color=000000",
+                    "logo" => "WordPress.png",
                     "level" => "",
                     "keywords" => []
                 ]

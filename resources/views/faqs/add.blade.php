@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Create New Page') }}
+            {{ __('Create New Faq') }}
         </h2>
     </x-slot>
 
@@ -12,14 +12,14 @@
 
                     <!-- Buttons Section -->
                     <div class="mb-6 m-2 flex justify-end space-x-4">
-                        <a href="{{ route('pages.index') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                            {{ __('Back to Pages') }}
+                        <a href="{{ route('faqs.index') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            {{ __('Back to Faqs') }}
                         </a>
                     </div>
 
-                    <!-- Page Create Form -->
-                    @include('pages.form')
-                                        
+                    <!-- Sample Create Form -->
+                    @include('faqs.form')
+
                 </div>
             </div>
         </div>

@@ -49,13 +49,14 @@ class WebPageController extends Controller
         // $json = File::get(storage_path('app/public/db.json'));
         // $data = json_decode($json, true);
 
-        $page = Page::where('slug', 'home')->firstOrFail();
+        $data['page'] = Page::where('slug', 'home')->firstOrFail();
+
         $meta = [
-                'title' => $page->meta_title,
-                'description' => $page->meta_description,
-                'keywords' => $page->meta_keywords,
+                'title' => $data['page']->meta_title,
+                'description' => $data['page']->meta_description,
+                'keywords' => $data['page']->meta_keywords,
                 'canonical_url' => url()->current(),
-                'robots' => $page->meta_robots,
+                'robots' => $data['page']->meta_robots,
                 'og' => [
                     'type' => 'website',
                     'locale' => 'en_PK',
@@ -63,12 +64,12 @@ class WebPageController extends Controller
                     'url' => url()->current(),
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
-                    'description' => $page->meta_description,
+                    'description' => $data['page']->meta_description,
                 ],
                 'twitter' => [
-                    'title' => $page->meta_title,
+                    'title' => $data['page']->meta_title,
                     'card' => 'summary_large_image',
-                    'description' => $page->meta_description,
+                    'description' => $data['page']->meta_description,
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ];
@@ -83,16 +84,14 @@ class WebPageController extends Controller
         $data['project']    = ThemeOption::getOptionByKey('project');
         $data['client']     = ThemeOption::getOptionByKey('client');
 
-        $data['customers']  = Customer::orderBy('id', 'desc')->limit(10)->get();
-        // $data['faqs']       = Faq::orderBy('id', 'desc')->limit(10)->get();
+        $data['page'] = Page::where('slug', 'about')->with(['pageMeta'])->firstOrFail();
 
-        $page = Page::where('slug', 'about')->firstOrFail();
         $meta = [
-                'title' => $page->meta_title,
-                'description' => $page->meta_description,
-                'keywords' => $page->meta_keywords,
+                'title' => $data['page']->meta_title,
+                'description' => $data['page']->meta_description,
+                'keywords' => $data['page']->meta_keywords,
                 'canonical_url' => url()->current(),
-                'robots' => $page->meta_robots,
+                'robots' => $data['page']->meta_robots,
                 'og' => [
                     'type' => 'website',
                     'locale' => 'en_PK',
@@ -100,12 +99,12 @@ class WebPageController extends Controller
                     'url' => url()->current(),
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
-                    'description' => $page->meta_description,
+                    'description' => $data['page']->meta_description,
                 ],
                 'twitter' => [
-                    'title' => $page->meta_title,
+                    'title' => $data['page']->meta_title,
                     'card' => 'summary_large_image',
-                    'description' => $page->meta_description,
+                    'description' => $data['page']->meta_description,
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ];
@@ -113,13 +112,13 @@ class WebPageController extends Controller
     }
     public function services()
     {
-        $page = Page::where('slug', 'services')->firstOrFail();
+        $data['page'] = Page::where('slug', 'services')->firstOrFail();
         $meta = [
-                'title' => $page->meta_title,
-                'description' => $page->meta_description,
-                'keywords' => $page->meta_keywords,
+                'title' => $data['page']->meta_title,
+                'description' => $data['page']->meta_description,
+                'keywords' => $data['page']->meta_keywords,
                 'canonical_url' => url()->current(),
-                'robots' => $page->meta_robots,
+                'robots' => $data['page']->meta_robots,
                 'og' => [
                     'type' => 'website',
                     'locale' => 'en_PK',
@@ -127,26 +126,26 @@ class WebPageController extends Controller
                     'url' => url()->current(),
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
-                    'description' => $page->meta_description,
+                    'description' => $data['page']->meta_description,
                 ],
                 'twitter' => [
-                    'title' => $page->meta_title,
+                    'title' => $data['page']->meta_title,
                     'card' => 'summary_large_image',
-                    'description' => $page->meta_description,
+                    'description' => $data['page']->meta_description,
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ];
-        return view('webpage.services')->with(['meta' => $meta]);
+        return view('webpage.services')->with(['meta' => $meta])->with($data);;
     }
     public function work()
     {
-        $page = Page::where('slug', 'work')->firstOrFail();
+        $data['page'] = Page::where('slug', 'work')->firstOrFail();
         $meta = [
-                'title' => $page->meta_title,
-                'description' => $page->meta_description,
-                'keywords' => $page->meta_keywords,
+                'title' => $data['page']->meta_title,
+                'description' => $data['page']->meta_description,
+                'keywords' => $data['page']->meta_keywords,
                 'canonical_url' => url()->current(),
-                'robots' => $page->meta_robots,
+                'robots' => $data['page']->meta_robots,
                 'og' => [
                     'type' => 'website',
                     'locale' => 'en_PK',
@@ -154,29 +153,29 @@ class WebPageController extends Controller
                     'url' => url()->current(),
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
-                    'description' => $page->meta_description,
+                    'description' => $data['page']->meta_description,
                 ],
                 'twitter' => [
-                    'title' => $page->meta_title,
+                    'title' => $data['page']->meta_title,
                     'card' => 'summary_large_image',
-                    'description' => $page->meta_description,
+                    'description' => $data['page']->meta_description,
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ];
-        return view('webpage.work')->with(['meta' => $meta]);
+        return view('webpage.work')->with(['meta' => $meta])->with($data);;
     }
 
     public function posts()
     {
         $posts = Post::latest()->with(['user', 'profile', 'category'])->paginate(6);
 
-        $page = Page::where('slug', 'blogs')->firstOrFail();
+        $data['page'] = Page::where('slug', 'blogs')->firstOrFail();
         $meta = [
-                'title' => $page->meta_title,
-                'description' => $page->meta_description,
-                'keywords' => $page->meta_keywords,
+                'title' => $data['page']->meta_title,
+                'description' => $data['page']->meta_description,
+                'keywords' => $data['page']->meta_keywords,
                 'canonical_url' => url()->current(),
-                'robots' => $page->meta_robots,
+                'robots' => $data['page']->meta_robots,
                 'og' => [
                     'type' => 'website',
                     'locale' => 'en_PK',
@@ -184,16 +183,16 @@ class WebPageController extends Controller
                     'url' => url()->current(),
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
-                    'description' => $page->meta_description,
+                    'description' => $data['page']->meta_description,
                 ],
                 'twitter' => [
-                    'title' => $page->meta_title,
+                    'title' => $data['page']->meta_title,
                     'card' => 'summary_large_image',
-                    'description' => $page->meta_description,
+                    'description' => $data['page']->meta_description,
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ];
-        return view('webpage.posts')->with(['meta' => $meta])->with(['posts' => $posts]);
+        return view('webpage.posts')->with(['meta' => $meta])->with(['posts' => $posts])->with($data);
 
     }
     public function post($slug)
@@ -316,13 +315,13 @@ class WebPageController extends Controller
         $data['address']  = ThemeOption::getOptionByKey('address');
         $data['location'] = ThemeOption::getOptionByKey('location');
 
-        $page = Page::where('slug', 'contact')->firstOrFail();
+        $data['page'] = Page::where('slug', 'contact')->firstOrFail();
         $meta = [
-                'title' => $page->meta_title,
-                'description' => $page->meta_description,
-                'keywords' => $page->meta_robots,
+                'title' => $data['page']->meta_title,
+                'description' => $data['page']->meta_description,
+                'keywords' => $data['page']->meta_robots,
                 'canonical_url' => url()->current(),
-                'robots' => $page->meta_robots,
+                'robots' => $data['page']->meta_robots,
                 'og' => [
                     'type' => 'website',
                     'locale' => 'en_PK',
@@ -330,12 +329,12 @@ class WebPageController extends Controller
                     'url' => url()->current(),
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                     'image_type' => 'image/jpg',
-                    'description' => $page->meta_description,
+                    'description' => $data['page']->meta_description,
                 ],
                 'twitter' => [
-                    'title' => $page->meta_title,
+                    'title' => $data['page']->meta_title,
                     'card' => 'summary_large_image',
-                    'description' => $page->meta_description,
+                    'description' => $data['page']->meta_description,
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ];

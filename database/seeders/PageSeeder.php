@@ -18,13 +18,21 @@ class PageSeeder extends Seeder
 
         // Define the path to your CSV file
         $csvFile = base_path('database/seeders/pages.csv'); // Update the path if needed
+        // Read the CSV data
         $csvData = array_map('str_getcsv', file($csvFile));
         $header = array_shift($csvData); // Remove the header row
 
         foreach ($csvData as $row) {
-            $data = array_combine($header, $row); // Combine header with data
+            // Skip rows where the number of values doesn't match the header count
+            if (count($header) !== count($row)) {
+                // Optionally log or output skipped rows for debugging
+                continue; 
+            }
+            
+            // Combine header and row values
+            $data = array_combine($header, $row);
 
-            // Insert the FAQ data into the database
+            // Insert the page data into the database
             Page::create([
                 'user_id'          => $data['user_id'] ?? null,
                 'page_title'       => $data['page_title'] ?? null,          // Page Title field from the CSV

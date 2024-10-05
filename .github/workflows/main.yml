@@ -21,4 +21,4 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}  # FTP password secret
         port: ${{ secrets.FTP_PORT }}  # Optional: FTP port, if different from default (21)
         local-dir: ./  # Directory to upload (use `./` for the entire repo)
-        server-dir: /home/umarwaqas/public_html  # Remote directory on SiteGround to upload files
+        server-dir: ./  # Remote directory on SiteGround to upload files

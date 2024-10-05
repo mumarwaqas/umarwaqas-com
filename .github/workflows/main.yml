@@ -19,6 +19,5 @@ jobs:
         server: ${{ secrets.FTP_HOSTNAME }}  # The FTP server hostname
         username: ${{ secrets.FTP_USERNAME }}  # FTP username secret
         password: ${{ secrets.FTP_PASSWORD }}  # FTP password secret
-        port: ${{ secrets.FTP_PORT }}  # Optional: FTP port, if different from default (21)
         local-dir: ./  # Directory to upload (use `./` for the entire repo)
-        server-dir: /public_html/  # Remote directory on SiteGround to upload files
+        server-dir: ./public_html/  # Remote directory to upload files

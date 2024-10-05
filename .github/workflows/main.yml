@@ -20,4 +20,4 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}  # FTP username secret
         password: ${{ secrets.FTP_PASSWORD }}  # FTP password secret
         local-dir: ./  # Directory to upload (use `./` for the entire repo)
-        server-dir: /home/public_html  # Remote directory to upload files
+        server-dir: ./public_html  # Remote directory to upload files

@@ -10,6 +10,14 @@
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="min-w-full overflow-x-auto">
 
+                    <!-- Search Form -->
+                    <div class="mb-6 m-2 flex justify-between">
+                        <form method="GET" action="{{ route('orders.index') }}" class="flex space-x-2">
+                            <input type="text" name="search" value="{{ request('search') }}" class="px-4 py-2 border rounded-md" placeholder="Search by title...">
+                            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Search</button>
+                        </form>
+                    </div>
+
                     <table class="min-w-full divide-y divide-gray-200 border">
                         <thead>
                             <tr>

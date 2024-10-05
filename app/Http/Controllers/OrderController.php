@@ -26,7 +26,6 @@ class OrderController extends Controller
     {
         //
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -37,6 +36,7 @@ class OrderController extends Controller
         $page = Page::where('slug', 'order-now')->firstOrFail();
 
         $meta = [
+                'page_title' => $page->meta_title,
                 'title' => $page->meta_title,
                 'description' => $page->meta_description,
                 'keywords' => $page->meta_keywords,
@@ -44,7 +44,7 @@ class OrderController extends Controller
                 'robots' => $page->meta_robots,
                 'og' => [
                     'type' => 'website',
-                    'locale' => 'en_PK',
+                    'locale' => 'en_GB',
                     'site_name' => 'Umar Waqas',
                     'url' => url()->current(),
                     'image' => $page->image ? asset($page->image) : asset('assets/images/logo.webp'),
@@ -61,7 +61,6 @@ class OrderController extends Controller
         // Pass the writer to the view
         return view('webpage.order-now')->with(['meta' => $meta]);
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -90,7 +89,8 @@ class OrderController extends Controller
             'discounted_price'  => 'required',
             'final_price'       => 'required',
         ]);
-    
+
+
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
@@ -121,7 +121,7 @@ class OrderController extends Controller
     
         // Generate a custom order ID
         $lastOrder  = Order::latest('id')->first();
-        $newOrderId = 'TAP-' . str_pad($lastOrder ? ($lastOrder->id + 1) : 1, 7, '0', STR_PAD_LEFT);
+        $newOrderId = '' . str_pad($lastOrder ? ($lastOrder->id + 1) : 1, 9, '0', STR_PAD_LEFT);
     
         // Create the order
         $order = new Order($request->all());
@@ -139,9 +139,54 @@ class OrderController extends Controller
         Mail::to($user->email)->send(new OrderCreated($order));
         // Mail::to('developerflh@gmail.com')->send(new OrderCreated($order));
 
-        return redirect()->back()->with('success', 'Thank you! Your order details have been sent. Please check your email for further information.');
-    }
+        // Save order number in session
+        session(['order_no' => $newOrderId]);
 
+        // return redirect()->back()->with('success', 'Thank you! Your order details have been sent. Please check your email for further information.');
+        return redirect()->route('order-preview')->with('success', 'Thank you! Your order details have been sent. Please check your email for further information.');
+
+    }
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function preview()
+    {
+        // Mail::to('developerflh@gmail.com')->send(new TestEmail());
+        // return 'Email sent!';
+        $page = Page::where('slug', 'order-preview')->firstOrFail();
+
+        $meta = [
+                'page_title' => $page->meta_title,
+                'title' => $page->meta_title,
+                'description' => $page->meta_description,
+                'keywords' => $page->meta_keywords,
+                'canonical_url' => url()->current(),
+                'robots' => $page->meta_robots,
+                'og' => [
+                    'type' => 'website',
+                    'locale' => 'en_GB',
+                    'site_name' => 'Umar Waqas',
+                    'url' => url()->current(),
+                    'image' => $page->image ? asset($page->image) : asset('assets/images/logo.webp'),
+                    'image_type' => 'image/jpg',
+                    'description' => $page->meta_description,
+                ],
+                'twitter' => [
+                    'title' => $page->meta_title,
+                    'card' => 'summary_large_image',
+                    'description' => $page->meta_description,
+                    'image' => $page->image ? asset($page->image) : asset('assets/images/logo.webp'),
+                ]
+            ];
+
+        $orderNo = session('order_no');
+
+        // Load the order details using the order number
+        $order = Order::where('order_no', $orderNo)->with(['user', 'profile'])->firstOrFail();
+
+        // Pass the writer to the view
+        return view('webpage.order-preview')->with(['meta' => $meta])->with(['order' => $order]);
+    }
     /**
      * Display the specified resource.
      */
@@ -181,7 +226,7 @@ class OrderController extends Controller
     {
         // Validate the files
         $request->validate([
-            'upload_file.*' => 'required|file|mimes:jpeg,jpg,png,gif,pdf,avi,mp4,mov,doc,docx,odt,xls,xlsx,ods,ppt,pptx,txt|max:20480', // Max 20MB
+            'upload_file.*' => 'required|file|mimes:jpeg,jpg,png,gif,webp,pdf,avi,mp4,mov,doc,docx,odt,pdf,xls,xlsx,csv,ods,ppt,pptx,txt|max:20480', // Max 20MB
         ]);
 
         $filePaths = [];

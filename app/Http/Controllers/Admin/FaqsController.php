@@ -13,10 +13,17 @@ use Illuminate\Support\Str;
 class FaqsController extends Controller
 {
     // Display a list of Faq
-    public function index()
+    public function index(Request $request)
     {
-        $faqs = Faq::orderBy('id', 'desc')->paginate(10);
-        return view('faqs.index')->with(['faqs' => $faqs]);
+
+        $query = Faq::query();
+
+        if ($request->has('search')) {
+            $query->where('question', 'like', '%' . $request->input('search') . '%');
+        }
+
+        $questions = $query->orderBy('id', 'desc')->paginate(10);
+        return view('faqs.index')->with(['faqs' => $questions]);
     }
 
     // Show the form for creating a new faq

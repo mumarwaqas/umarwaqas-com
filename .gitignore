@@ -18,7 +18,3 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-database/migrations/0001_01_01_000000_create_users_table.php
-database/migrations/0001_01_01_000001_create_cache_table.php
-database/migrations/0001_01_01_000002_create_jobs_table.php
-database/migrations/2024_08_26_182954_create_customers_table.php

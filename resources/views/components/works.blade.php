@@ -10,7 +10,7 @@ $work = json_decode($works, true);
         </p>
         <div class="flex items-center gap-3">
             <div class="grid h-12 w-12 shrink-0 place-content-center rounded-lg bg-light dark:bg-dark-2">
-                <img src="{{ asset('assets/images/company/' . $entry['logo']) }}" data-src="{{ asset('assets/images/company/' . $entry['logo']) }}" alt="{{ $entry['company'] }}" class="h-9 w-9" />
+                <img src="{{ $entry['logo'] }}" alt="{{ $entry['company'] }}" class="h-9 w-9" />
             </div>
             <div class="">
                 <h6 class="text-base font-semibold text-dark dark:text-light/70">

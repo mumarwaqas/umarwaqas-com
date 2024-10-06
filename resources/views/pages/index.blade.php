@@ -25,17 +25,25 @@
                     <table class="min-w-full divide-y divide-gray-200 border">
                         <thead>
                             <tr>
+<<<<<<< HEAD
                                 <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">#</td>
                                 <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">Title</td>
                                 <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">Author</td>
                                 <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">Created At</td>
                                 <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-right">Actions</td>
+=======
+                            {{-- <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">ID</td> --}}
+                            <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">Title</td>
+                            <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">Author</td>
+                            <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">Created At</td>
+                            <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">Actions</td>
+>>>>>>> parent of ee563be (Latest)
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 divide-solid">
                             @foreach ($pages as $page)
                                 <tr class="bg-white">
-                                    <td class="whitespace-pre py-2 px-4 border-b text-sm text-gray-900">{{ $page->id }}</td>
+                                    {{-- <td class="whitespace-pre py-2 px-4 border-b text-sm text-gray-900">{{ $page->id }}</td> --}}
                                     <td class="whitespace-pre py-2 px-4 border-b text-sm text-gray-900 text-ellipsis">{{ $page->title }}</td>
                                     <td class="whitespace-pre py-2 px-4 border-b text-sm text-gray-900 text-ellipsis">{{ $page->user->name }}</td>
                                     <td class="whitespace-pre py-2 px-4 border-b text-sm text-gray-900">{{ $page->created_at->format('M j, Y, g:i a') }}</td>

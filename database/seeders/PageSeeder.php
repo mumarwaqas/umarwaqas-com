@@ -17,6 +17,7 @@ class PageSeeder extends Seeder
         // Create 10 pages
         // Page::factory()->count(10)->create();
 
+<<<<<<< HEAD
         $csvFile = base_path('database/seeders/pages.csv');
         $csv = Reader::createFromPath($csvFile, 'r');
         $csv->setHeaderOffset(0); // use the first row as the header
@@ -24,6 +25,17 @@ class PageSeeder extends Seeder
         $csvData = $csv->getRecords(); // returns an iterable object
         
         foreach ($csvData as $row) {
+=======
+        // Define the path to your CSV file
+        $csvFile = base_path('database/seeders/pages.csv'); // Update the path if needed
+        $csvData = array_map('str_getcsv', file($csvFile));
+        $header = array_shift($csvData); // Remove the header row
+
+        foreach ($csvData as $row) {
+            $data = array_combine($header, $row); // Combine header with data
+
+            // Insert the FAQ data into the database
+>>>>>>> parent of ee563be (Latest)
             Page::create([
                 'user_id'          => $row['user_id'] ?? null,
                 'page_title'       => $row['page_title'] ?? null,

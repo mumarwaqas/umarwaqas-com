@@ -13,6 +13,7 @@
         <!-- Title -->
         <div class="mb-4">
             <label for="title" class="block text-gray-700 font-medium mb-2">Title</label>
+<<<<<<< HEAD
             <input type="text" name="title" id="title" class="form-input mt-1 block w-full @error('title') border-red-500 @enderror" value="{{ old('title', $page->title ?? '') }}" onkeyup="generateSlug()">
 
             <!-- Current host URL -->
@@ -29,11 +30,15 @@
                 <button type="button" class="text-red-500 mt-2 ml-2" onclick="cancelEdit()">Cancel</button>
             </div>
 
+=======
+            <input type="text" name="title" id="title" class="form-input mt-1 block w-full @error('title') border-red-500 @enderror" value="{{ old('title', $page->title ?? '') }}">
+>>>>>>> parent of ee563be (Latest)
             @error('title')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror
             <p class="text-gray-500 text-xs mt-1">Enter the title of the post.</p>
         </div>
+<<<<<<< HEAD
     </div>
 
     <!-- Content Information -->
@@ -49,14 +54,13 @@
             @enderror
             <p class="text-gray-500 text-xs mt-1">Enter the page title of the post. This will be displayed as the main heading.</p>
         </div>
+=======
+>>>>>>> parent of ee563be (Latest)
 
         <!-- Content -->
         <div class="mb-4">
             <label for="content" class="block text-gray-700 font-medium mb-2">Content</label>
-
-            {{-- <div id="editor">{!! old('content', $page->content ?? '') !!}</div> --}}
-
-            <textarea name="content" id="editor" class="form-textarea mt-1 block w-full @error('content') border-red-500 @enderror">{{ old('content', $page->content ?? '') }}</textarea>
+            <textarea name="content" id="content" class="form-textarea mt-1 block w-full @error('content') border-red-500 @enderror">{{ old('content', $page->content ?? '') }}</textarea>
             @error('content')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror
@@ -119,237 +123,13 @@
         </div>
     </div>
 
-    <!-- Page Type -->
-    <div class="border border-gray-300 rounded-lg p-4 mb-8">
-        <h2 class="text-lg font-semibold text-gray-800 mb-4">Page Information</h2>
-
-        <!-- Page Type -->
-        <div class="mb-4">
-            <label for="page_type" class="block text-gray-700 font-medium mb-2">Page Type</label>
-            <select name="page_type" id="page_type" class="form-select mt-1 block w-full @error('page_type') border-red-500 @enderror" onchange="toggleSections()">
-                <option value="">Select Page Type</option>
-                <option value="page" {{ old('page_type', $page->page_type ?? '') == 'page' ? 'selected' : '' }}>Page</option>
-                <option value="service" {{ old('page_type', $page->page_type ?? '') == 'service' ? 'selected' : '' }}>Service</option>
-            </select>
-            @error('page_type')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-            @enderror
-            <p class="text-gray-500 text-sm mt-1">Select the type of page you want to create. "Page" is for standard content, while "Service" is used for service-related content.</p>
-        </div>
-    </div>
-
-    <!-- Sections to be toggled -->
-    <div id="pageSection" class="hidden border border-gray-300 rounded-lg p-4 mb-8">
-        <h2 class="text-lg font-semibold text-gray-800 mb-4">Page Information</h2>
-        <!-- Additional fields for the "Page" type -->
-    </div>
-
-    <div id="serviceSection" class="hidden border border-gray-300 rounded-lg p-4 mb-8">
-        <h2 class="text-lg font-semibold text-gray-800 mb-4">Service Information</h2>
-        <!-- Additional fields for the "Service" type -->
-    </div>
-
-    <!-- Writer Information -->
-    <div class="border border-gray-300 rounded-lg p-4 mb-8">
-        <h2 class="text-lg font-semibold text-gray-800 mb-4">Writer Information</h2>
-
-        <!-- Title -->
-        <div class="mb-4">
-            @php
-                // Check if pageMeta exists and is not null
-                $writer_section_meta = isset($page) && $page->pageMeta  ? $page->pageMeta->where('meta_key', 'writer_section_title')->first() : null;        
-                // Get the meta value if the writer section meta exists
-                $writer_section_title = $writer_section_meta ? $writer_section_meta->meta_value : '';
-            @endphp
-        
-            <label for="writer_section_title" class="block text-gray-700 font-medium mb-2">Title</label>
-            <input type="text" name="writer_section_title" id="writer_section_title" class="form-input mt-1 block w-full @error('writer_section_title') border-red-500 @enderror" value="{{ old('writer_section_title', $writer_section_title) }}">
-            @error('writer_section_title')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-            @enderror
-            <p class="text-gray-500 text-xs mt-1">Enter a title for writer section. This is what will appear in search engine results.</p>
-        </div>
-
-        <!-- Content -->
-        <div class="mb-4">
-            @php
-                // Check if pageMeta exists and is not null
-                $writer_section_meta = isset($page) && $page->pageMeta  ? $page->pageMeta->where('meta_key', 'writer_section_content')->first() : null;        
-                // Get the meta value if the writer section meta exists
-                $writer_section_content = $writer_section_meta ? $writer_section_meta->meta_value : '';
-            @endphp
-            <label for="writer_section_content" class="block text-gray-700 font-medium mb-2">Content</label>
-            <textarea name="writer_section_content" id="writer_section_content" class="form-textarea mt-1 block w-full @error('writer_section_content') border-red-500 @enderror">{{ old('writer_section_content', $writer_section_content) }}</textarea>
-            @error('writer_section_content')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-            @enderror
-            <p class="text-gray-500 text-xs mt-1">Enter content for writer section. This will appear in search engine results.</p>
-        </div>
-
-        <!-- Multiple Select Writers -->
-        <div class="mb-4">
-            <label for="writers" class="block text-gray-700 font-medium mb-2">Select Writers</label>
-            <select name="writers[]" id="writers" multiple class="form-select mt-1 block w-full h-40 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                @foreach ($writers as $writer)
-                <option value="{{ $writer->id }}" 
-                    @if (old('writers') && in_array($writer->id, old('writers')))
-                        selected 
-                    @elseif (isset($page))
-                        @php
-                            $writersMeta = isset($page->pageMeta) ? $page->pageMeta->where('meta_key', 'writers')->first() : null;
-                            $selectedWriters = $writersMeta ? explode(',', $writersMeta->meta_value) : [];
-                        @endphp
-                        @if (in_array($writer->id, $selectedWriters))
-                            selected
-                        @endif
-                    @endif
-                >
-                    {{ $writer->name }}
-                </option>
-                @endforeach
-            </select>
-            <p class="text-gray-500 text-xs mt-1">Hold down the Ctrl (Windows) or Command (Mac) key to select multiple options.</p>
-        </div>
-
-    </div>
-
-    <!-- Faq Information -->
-    <div class="border border-gray-300 rounded-lg p-4 mb-8">
-        <h2 class="text-lg font-semibold text-gray-800 mb-4">Faqs Information</h2>
-
-        <!-- Title -->
-        <div class="mb-4">
-            @php
-            // Check if pageMeta exists and contains the necessary data
-            $faq_section_meta = isset($page) && $page->pageMeta ? $page->pageMeta->where('meta_key', 'faq_section_title')->first()  : null;
-
-            // If the meta exists, fetch the meta_value; otherwise, set it to an empty string
-            $faq_section_title = $faq_section_meta ? $faq_section_meta->meta_value : '';
-            @endphp
-        
-            <label for="faq_section_title" class="block text-gray-700 font-medium mb-2">Title</label>
-            <input type="text" name="faq_section_title" id="faq_section_title" class="form-input mt-1 block w-full @error('faq_section_title') border-red-500 @enderror" value="{{ old('faq_section_title', $faq_section_title) }}">
-            @error('faq_section_title')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-            @enderror
-            <p class="text-gray-500 text-xs mt-1">Enter a title for faq section. This is what will appear in search engine results.</p>
-        </div>
-
-        <!-- Content -->
-        <div class="mb-4">
-            @php
-            $faq_section_meta = isset($page) && $page->pageMeta ? $page->pageMeta->where('meta_key', 'faq_section_content')->first() : null;
-            $faq_section_content = $faq_section_meta ? $faq_section_meta->meta_value : '';
-            @endphp
-            <label for="faq_section_content" class="block text-gray-700 font-medium mb-2">Content</label>
-            <textarea name="faq_section_content" id="faq_section_content" class="form-textarea mt-1 block w-full @error('faq_section_content') border-red-500 @enderror">{{ old('faq_section_content', $faq_section_content) }}</textarea>
-            @error('faq_section_content')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-            @enderror
-            <p class="text-gray-500 text-xs mt-1">Enter content for faq section. This will appear in search engine results.</p>
-        </div>
-
-        <!-- Multiple Select Faqs -->
-        <div class="mb-4">
-            <label for="faqs" class="block text-gray-700 font-medium mb-2">Select Faqs</label>
-            <select name="faqs[]" id="faqs" multiple class="form-select mt-1 block w-full h-40 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                @foreach ($faqs as $faq)
-                <option value="{{ $faq->id }}" 
-                    @if (old('faqs') && in_array($faq->id, old('faqs')))
-                        selected 
-                    @elseif (isset($page))
-                        @php
-                            $faqsMeta = isset($page->pageMeta) ? $page->pageMeta->where('meta_key', 'faqs')->first() : null;
-
-                            $selectedFaqs = $faqsMeta ? explode(',', $faqsMeta->meta_value) : [];
-                        @endphp
-                        @if (in_array($faq->id, $selectedFaqs))
-                            selected
-                        @endif
-                    @endif
-                >
-                    {{ $faq->question }}
-                </option>
-                @endforeach
-            </select>
-            <p class="text-gray-500 text-xs mt-1">Hold down the Ctrl (Windows) or Command (Mac) key to select multiple options.</p>
-        </div>
-
-    </div>
-
-    <!-- Customer Information -->
-    <div class="border border-gray-300 rounded-lg p-4 mb-8">
-        <h2 class="text-lg font-semibold text-gray-800 mb-4">Customers Information</h2>
-
-        <!-- Title -->
-        <div class="mb-4">
-            @php
-            $customer_section_meta = isset($page) && $page->pageMeta ? $page->pageMeta->where('meta_key', 'customer_section_title')->first() : null;
-            $customer_section_title = $customer_section_meta ? $customer_section_meta->meta_value : '';
-            @endphp
-            <label for="customer_section_title" class="block text-gray-700 font-medium mb-2">Title</label>
-            <input type="text" name="customer_section_title" id="customer_section_title" class="form-input mt-1 block w-full @error('customer_section_title') border-red-500 @enderror" value="{{ old('customer_section_title', $customer_section_title) }}">
-            @error('customer_section_title')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-            @enderror
-            <p class="text-gray-500 text-xs mt-1">Enter a title for customer section. This is what will appear in search engine results.</p>
-        </div>
-
-        <!-- Content -->
-        <div class="mb-4">
-            @php
-            $customer_section_meta = isset($page) && $page->pageMeta ? $page->pageMeta->where('meta_key', 'customer_section_content')->first() : null;
-            $customer_section_content = $customer_section_meta ? $customer_section_meta->meta_value : '';
-            @endphp
-            <label for="customer_section_content" class="block text-gray-700 font-medium mb-2">Content</label>
-            <textarea name="customer_section_content" id="customer_section_content" class="form-textarea mt-1 block w-full @error('customer_section_content') border-red-500 @enderror">{{ old('customer_section_content', $customer_section_content) }}</textarea>
-            @error('customer_section_content')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-            @enderror
-            <p class="text-gray-500 text-xs mt-1">Enter content for the customer section. This will appear in search engine results.</p>
-        </div>
-
-        <!-- Multiple Select Customers -->
-        <div class="mb-4">
-            <label for="customers" class="block text-gray-700 font-medium mb-2">Select Customers</label>
-            <select name="customers[]" id="customers" multiple class="form-select mt-1 block w-full h-40 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                @foreach ($customers as $customer)
-                <option value="{{ $customer->id }}" 
-                    @if (old('customers') && in_array($customer->id, old('customers')))
-                        selected 
-                    @elseif (isset($page))
-                        @php
-                            $customersMeta = isset($page->pageMeta) ? $page->pageMeta->where('meta_key', 'customers')->first() : null;
-
-                            $selectedCustomers = $customersMeta ? explode(',', $customersMeta->meta_value) : [];
-                        @endphp
-                        @if (in_array($customer->id, $selectedCustomers))
-                            selected
-                        @endif
-                    @endif
-                >
-                    {{ $customer->name }}
-                </option>
-                @endforeach
-            </select>
-            <p class="text-gray-500 text-xs mt-1">Hold down the Ctrl (Windows) or Command (Mac) key to select multiple options.</p>
-        </div>
-
-    </div>
-
-    <!-- Image Upload Section -->
+    <!-- Image -->
     <div class="border border-gray-300 rounded-lg p-4 mb-8">
         <h2 class="text-lg font-semibold text-gray-800 mb-4">Image</h2>
 
         <div class="mb-4">
-            <label for="image" class="block text-gray-700 font-medium mb-2">Uploaded Image</label>
-            @if(isset($page->image))
-            <div class="mt-4" id="imagePreview">
-                <img src="{{ asset($page->image) }}" id="preview" alt="Uploaded Image" class="w-32 h-32 object-cover rounded-lg">
-            </div>
-            @endif
-            
-            <input type="file" name="image" id="image" class="form-input mt-1 block w-full @error('image') border-red-500 @enderror" accept="image/*" onchange="previewImage(event)">
+            <label for="image" class="block text-gray-700 font-medium mb-2">Image</label>
+            <input type="file" name="image" id="image" class="form-input mt-1 block w-full @error('image') border-red-500 @enderror">
             @error('image')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror
@@ -364,6 +144,7 @@
         </button>
     </div>
 </form>
+<<<<<<< HEAD
 
 @push('scripts')
 <!-- Select2 CSS -->
@@ -596,3 +377,5 @@ div#cke_notifications_area_editor {
 
 
 @endpush
+=======
+>>>>>>> parent of ee563be (Latest)

@@ -18,8 +18,6 @@ class Page extends Model
         'title',
         'slug',
         'content',
-        'page_title',
-        'page_type',
         'meta_title',
         'meta_description',
         'meta_keywords',
@@ -55,16 +53,5 @@ class Page extends Model
     public function profile()
     {
         return $this->belongsTo(\App\Models\Profile::class, 'user_id', 'user_id');
-    }
-
-
-    /**
-     * Page belongs to a Page Meta.
-     *
-     * @return mixed
-     */
-    public function pageMeta()
-    {
-        return $this->hasOne(\App\Models\PageMeta::class, 'page_id', 'id');
     }
 }

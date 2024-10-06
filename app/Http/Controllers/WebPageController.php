@@ -25,6 +25,7 @@ class WebPageController extends Controller
 {
     public function home()
     {
+<<<<<<< HEAD
         // Find the writer by writer_no
         $writers = Writer::orderBy('id', 'desc')->limit(5)->get();
         $samples = Sample::orderBy('id', 'desc')->limit(10)->get();
@@ -34,6 +35,13 @@ class WebPageController extends Controller
 
         $meta = [
                 'page_title' => $page->page_title,
+=======
+        // $json = File::get(storage_path('app/public/db.json'));
+        // $data = json_decode($json, true);
+
+        $page = Page::where('slug', 'home')->firstOrFail();
+        $meta = [
+>>>>>>> parent of ee563be (Latest)
                 'title' => $page->meta_title,
                 'description' => $page->meta_description,
                 'keywords' => $page->meta_keywords,
@@ -52,7 +60,11 @@ class WebPageController extends Controller
                     'title' => $page->meta_title,
                     'card' => 'summary_large_image',
                     'description' => $page->meta_description,
+<<<<<<< HEAD
                     'image' => $page->image ? asset($page->image) : asset('assets/images/logo.webp'),
+=======
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
+>>>>>>> parent of ee563be (Latest)
                 ]
             ];
         // Pass the writer to the view
@@ -61,13 +73,26 @@ class WebPageController extends Controller
     public function about()
     {
 
+<<<<<<< HEAD
         $writers = Writer::orderBy('id', 'desc')->limit(5)->get();
         $samples = Sample::orderBy('id', 'desc')->limit(10)->get();
         $customers = Customer::orderBy('id', 'desc')->limit(5)->get();
         $faqs = Faq::orderBy('id', 'desc')->limit(10)->get();
         $page = Page::where('page_type', 'page')->where('slug', 'about-us')->with(['pageMeta'])->firstOrFail();
+=======
+        $data['name']       = ThemeOption::getOptionByKey('name');
+        $data['summary']    = ThemeOption::getOptionByKey('summary');
+        $data['experience'] = ThemeOption::getOptionByKey('experience');
+        $data['project']    = ThemeOption::getOptionByKey('project');
+        $data['client']     = ThemeOption::getOptionByKey('client');
 
+        $data['customers']  = Customer::orderBy('id', 'desc')->limit(10)->get();
+        // $data['faqs']       = Faq::orderBy('id', 'desc')->limit(10)->get();
+>>>>>>> parent of ee563be (Latest)
+
+        $page = Page::where('slug', 'about')->firstOrFail();
         $meta = [
+<<<<<<< HEAD
             'page_title' => $page->page_title,
             'title' => $page->meta_title,
             'description' => $page->meta_description,
@@ -100,6 +125,8 @@ class WebPageController extends Controller
 
         $meta = [
                 'page_title' => $page->page_title,
+=======
+>>>>>>> parent of ee563be (Latest)
                 'title' => $page->meta_title,
                 'description' => $page->meta_description,
                 'keywords' => $page->meta_keywords,
@@ -118,6 +145,7 @@ class WebPageController extends Controller
                     'title' => $page->meta_title,
                     'card' => 'summary_large_image',
                     'description' => $page->meta_description,
+<<<<<<< HEAD
                     'image' => $page->image ? asset($page->image) : asset('assets/images/logo.webp'),
                 ]
             ];
@@ -218,6 +246,8 @@ class WebPageController extends Controller
                     'title' => $page->meta_title,
                     'card' => 'summary_large_image',
                     'description' => $page->meta_description,
+=======
+>>>>>>> parent of ee563be (Latest)
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ];
@@ -405,11 +435,66 @@ class WebPageController extends Controller
     }
     public function services()
     {
+<<<<<<< HEAD
         $writers = Writer::orderBy('id', 'desc')->limit(5)->get();
         $samples = Sample::orderBy('id', 'desc')->limit(10)->get();
         $customers = Customer::orderBy('id', 'desc')->limit(5)->get();
         $faqs = Faq::orderBy('id', 'desc')->limit(10)->get();
         $page = Page::where('slug', 'services')->firstOrFail();
+=======
+        $page = Page::where('slug', 'services')->firstOrFail();
+        $meta = [
+                'title' => $page->meta_title,
+                'description' => $page->meta_description,
+                'keywords' => $page->meta_keywords,
+                'canonical_url' => url()->current(),
+                'robots' => $page->meta_robots,
+                'og' => [
+                    'type' => 'website',
+                    'locale' => 'en_PK',
+                    'site_name' => config('app.name'),
+                    'url' => url()->current(),
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
+                    'image_type' => 'image/jpg',
+                    'description' => $page->meta_description,
+                ],
+                'twitter' => [
+                    'title' => $page->meta_title,
+                    'card' => 'summary_large_image',
+                    'description' => $page->meta_description,
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
+                ]
+            ];
+        return view('webpage.services')->with(['meta' => $meta]);
+    }
+    public function work()
+    {
+        $page = Page::where('slug', 'work')->firstOrFail();
+        $meta = [
+                'title' => $page->meta_title,
+                'description' => $page->meta_description,
+                'keywords' => $page->meta_keywords,
+                'canonical_url' => url()->current(),
+                'robots' => $page->meta_robots,
+                'og' => [
+                    'type' => 'website',
+                    'locale' => 'en_PK',
+                    'site_name' => config('app.name'),
+                    'url' => url()->current(),
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
+                    'image_type' => 'image/jpg',
+                    'description' => $page->meta_description,
+                ],
+                'twitter' => [
+                    'title' => $page->meta_title,
+                    'card' => 'summary_large_image',
+                    'description' => $page->meta_description,
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
+                ]
+            ];
+        return view('webpage.work')->with(['meta' => $meta]);
+    }
+>>>>>>> parent of ee563be (Latest)
 
         $meta = [
                 'page_title' => $page->page_title,
@@ -880,6 +965,7 @@ class WebPageController extends Controller
     {
         $posts = Post::latest()->with(['user', 'profile', 'category'])->paginate(6);
 
+<<<<<<< HEAD
         // Find the writer by writer_no
         $writers = Writer::orderBy('id', 'desc')->limit(5)->get();
         // $samples = Sample::orderBy('id', 'desc')->limit(10)->get();
@@ -889,6 +975,10 @@ class WebPageController extends Controller
 
         $meta = [
                 'page_title' => $page->page_title,
+=======
+        $page = Page::where('slug', 'blogs')->firstOrFail();
+        $meta = [
+>>>>>>> parent of ee563be (Latest)
                 'title' => $page->meta_title,
                 'description' => $page->meta_description,
                 'keywords' => $page->meta_keywords,
@@ -907,12 +997,20 @@ class WebPageController extends Controller
                     'title' => $page->meta_title,
                     'card' => 'summary_large_image',
                     'description' => $page->meta_description,
+<<<<<<< HEAD
                     'image' => $page->image ? asset($page->image) : asset('assets/images/logo.webp'),
                 ]
             ];
         // Pass the writer to the view
         // return view('webpage.home')->with(['meta' => $meta])->with(['writers' => $writers])->with(['samples' => $samples])->with(['customers' => $customers])->with(['faqs' => $faqs]);
         return view('webpage.posts')->with(['meta' => $meta])->with(['posts' => $posts])->with(['writers' => $writers])->with(['customers' => $customers]);
+=======
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
+                ]
+            ];
+        return view('webpage.posts')->with(['meta' => $meta])->with(['posts' => $posts]);
+
+>>>>>>> parent of ee563be (Latest)
     }
     public function post($slug)
     {
@@ -1033,4 +1131,147 @@ class WebPageController extends Controller
         // return view('webpage.home')->with(['meta' => $meta])->with(['writers' => $writers])->with(['samples' => $samples])->with(['customers' => $customers])->with(['faqs' => $faqs]);
         return view('webpage.author-posts')->with(['meta' => $meta])->with(['author' => $author])->with(['posts' => $posts]);
     }
+<<<<<<< HEAD
+=======
+
+    public function contact()
+    {
+        $data['email']    = ThemeOption::getOptionByKey('email');
+        $data['phone']    = ThemeOption::getOptionByKey('phone');
+        $data['address']  = ThemeOption::getOptionByKey('address');
+        $data['location'] = ThemeOption::getOptionByKey('location');
+
+        $page = Page::where('slug', 'contact')->firstOrFail();
+        $meta = [
+                'title' => $page->meta_title,
+                'description' => $page->meta_description,
+                'keywords' => $page->meta_robots,
+                'canonical_url' => url()->current(),
+                'robots' => $page->meta_robots,
+                'og' => [
+                    'type' => 'website',
+                    'locale' => 'en_PK',
+                    'site_name' => config('app.name'),
+                    'url' => url()->current(),
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
+                    'image_type' => 'image/jpg',
+                    'description' => $page->meta_description,
+                ],
+                'twitter' => [
+                    'title' => $page->meta_title,
+                    'card' => 'summary_large_image',
+                    'description' => $page->meta_description,
+                    'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
+                ]
+            ];
+        return view('webpage.contact')->with(['meta' => $meta])->with($data);
+    }
+    public function store(Request $request)
+    {
+        // Validate incoming data
+        $validatedData = $request->validate([
+            'name'    => 'required|string|max:255',
+            'email'   => 'required|email|max:255',
+            'phone'   => 'required|string|max:255',
+            'message' => 'required|string|max:1000',
+        ]);
+
+        // Store the contact message in the database
+        Contact::create($validatedData);
+
+        // Send the email
+        Mail::to('info@umarwaqas.com')->send(new ContactMail($validatedData));
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Message sent and email delivered successfully!');
+    }
+    public function exportMetaData()
+    {
+        // Define the pages and their meta content
+        $pages = [
+            [
+                'title' => 'High-Quality Web Development | WordPress, Laravel, CodeIgniter',
+                'slug' => 'home',
+                'content' => 'Page content for home',
+                'meta_title' => 'High-Quality Web Development | WordPress, Laravel, CodeIgniter',
+                'meta_description' => 'Best web development and design services in Lahore with our professional team. Let us help you build a successful online platform for your business.',
+                'meta_keywords' => 'Web Development, WordPress, Laravel, CodeIgniter',
+                'canonical_url' => url('/'),
+                'meta_robots' => 'index, follow'
+            ],
+            [
+                'title' => 'Umar Waqas - Premier Web Development Services | Lahore, Pakistan',
+                'slug' => 'about',
+                'content' => 'Page content for about',
+                'meta_title' => 'Umar Waqas - Premier Web Development Services | Lahore, Pakistan',
+                'meta_description' => 'Elevate your online presence with Umar Waqas\'s web development expertise in WordPress, Laravel, and CodeIgniter.',
+                'meta_keywords' => 'Web Development, WordPress, Laravel, CodeIgniter',
+                'canonical_url' => url('/about'),
+                'meta_robots' => 'index, follow'
+            ],
+            [
+                'title' => 'Our Services - Web Development, Design, and Consulting',
+                'slug' => 'services',
+                'content' => 'Page content for services',
+                'meta_title' => 'Our Services - Web Development, Design, and Consulting',
+                'meta_description' => 'Explore our wide range of services including web development, design, and consulting. We provide top-notch solutions for your digital needs.',
+                'meta_keywords' => 'Web Development, Design, Consulting',
+                'canonical_url' => url('/services'),
+                'meta_robots' => 'index, follow'
+            ],
+            [
+                'title' => 'Our Work - Web Development Portfolio | Umar Waqas',
+                'slug' => 'work',
+                'content' => 'Page content for work',
+                'meta_title' => 'Our Work - Web Development Portfolio | Umar Waqas',
+                'meta_description' => 'View our portfolio showcasing web development projects completed by Umar Waqas. See our work in WordPress, Laravel, and other technologies.',
+                'meta_keywords' => 'Web Development, Portfolio, WordPress, Laravel',
+                'canonical_url' => url('/work'),
+                'meta_robots' => 'index, follow'
+            ],
+            [
+                'title' => 'Web Development Blog | Insights, Tips, and Trends',
+                'slug' => 'blog',
+                'content' => 'Page content for blog',
+                'meta_title' => 'Web Development Blog | Insights, Tips, and Trends',
+                'meta_description' => 'Stay informed with Umar Waqas\'s web development blog. Discover valuable articles, expert tips, and current web development trends.',
+                'meta_keywords' => 'Web Development, WordPress, Laravel, CodeIgniter, Tips, Trends',
+                'canonical_url' => url('/blog'),
+                'meta_robots' => 'index, follow'
+            ],
+            [
+                'title' => 'Contact Us - Get in Touch with Umar Waqas',
+                'slug' => 'contact',
+                'content' => 'Page content for contact',
+                'meta_title' => 'Contact Us - Get in Touch with Umar Waqas',
+                'meta_description' => 'Contact Umar Waqas for any web development inquiries, consultations, or collaborations. We are here to assist you with your digital needs.',
+                'meta_keywords' => 'Contact, Web Development, Inquiry',
+                'canonical_url' => url('/contact'),
+                'meta_robots' => 'index, follow'
+            ]
+        ];
+
+        // Convert data to CSV format
+        $csvFileName = 'meta_data.csv';
+        $headers = [
+            'title', 'slug', 'content', 'meta_title', 'meta_description', 'meta_keywords', 'canonical_url', 'meta_robots'
+        ];
+
+        $handle = fopen('php://temp', 'r+');
+        fputcsv($handle, $headers);
+
+        foreach ($pages as $page) {
+            fputcsv($handle, $page);
+        }
+
+        rewind($handle);
+        $csvContent = stream_get_contents($handle);
+        fclose($handle);
+
+        return Response::make($csvContent, 200, [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => "attachment; filename=\"$csvFileName\"",
+        ]);
+    }
+>>>>>>> parent of ee563be (Latest)
 }

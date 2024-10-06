@@ -14,18 +14,15 @@ class ContactMail extends Mailable
     use Queueable, SerializesModels;
 
     public $data;
-    public $filePath;
 
     /**
      * Create a new message instance.
      *
-     * @param array $data
-     * @param string|null $filePath
+     * @return void
      */
-    public function __construct($data, $filePath = null)
+    public function __construct($data)
     {
         $this->data = $data;
-        $this->filePath = $filePath;
     }
 
     /**
@@ -55,18 +52,10 @@ class ContactMail extends Mailable
      */
     public function build()
     {
-        $email = $this->from('info@cheap-essay-writing.co.uk')
-                        ->bcc(['m.umarwaqas@yahoo.com', 'info@cheap-essay-writing.co.uk'])
-                        ->subject('New Contact Message')
-                        ->view('emails.contact') // Blade view for email content
-                        ->with('data', $this->data);
-
-        // Check if a file path is provided, then attach the file
-        if ($this->filePath) {
-            $email->attach($this->filePath);
-        }
-
-        return $email;
+        return $this->from('info@umarwaqas.com')
+                    ->subject('New Contact Message')
+                    ->view('emails.contact') // Blade view for email content
+                    ->with('data', $this->data);
     }
 
     /**

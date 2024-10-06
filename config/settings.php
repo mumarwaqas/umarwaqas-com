@@ -3,26 +3,6 @@
 return [
 
     /*
-     * Is email required
-     */
-    'app_email' => env('APP_EMAIL', 'info@example.com'),
-
-    /*
-     * Is phone required
-     */
-    'app_phone' => env('APP_PHONE', '+44 1234 456 789'),
-
-    /*
-     * Is address required
-     */
-    'app_address' => env('APP_ADDRESS', 'Kemp House 152-160 City Road, London, England, United Kingdom'),
-
-    /*
-     * Is chat required
-     */
-    'app_chat' => env('APP_CHAT', '10'),
-
-    /*
      * Is email activation required
      */
     'app_project_version' => env('APP_PROJECT_VERSION', 10),

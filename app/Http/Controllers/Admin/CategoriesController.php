@@ -15,17 +15,11 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function index(Request $request)
+    public function index()
     {
-        $query = Category::query();
+        $categories = Category::paginate(10);
 
-        if ($request->has('search')) {
-            $query->where('title', 'like', '%' . $request->input('search') . '%');
-        }
-
-        $categories = $query->orderBy('id', 'desc')->paginate(10);
-        return view('admin.category.index')->with(['categories' => $categories]);
+        return view("admin.category.index", compact('categories'));
     }
 
     /**

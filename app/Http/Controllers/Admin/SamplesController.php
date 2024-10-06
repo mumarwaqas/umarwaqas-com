@@ -13,15 +13,9 @@ use Illuminate\Support\Str;
 class SamplesController extends Controller
 {
     // Display a list of sample
-    public function index(Request $request)
+    public function index()
     {
-        $query = Sample::query();
-
-        if ($request->has('search')) {
-            $query->where('title', 'like', '%' . $request->input('search') . '%');
-        }
-        
-        $samples = $query->orderBy('id', 'desc')->paginate(10);
+        $samples = Sample::orderBy('id', 'desc')->paginate(10);
         return view('samples.index')->with(['samples' => $samples]);
     }
 

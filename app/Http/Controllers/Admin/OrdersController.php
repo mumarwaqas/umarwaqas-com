@@ -10,16 +10,9 @@ use Illuminate\Http\Request;
 class OrdersController extends Controller
 {
     // Display a list of orders
-    public function index(Request $request)
+    public function index()
     {
-
-        $query = Order::query();
-
-        if ($request->has('search')) {
-            $query->where('order_no', 'like', '%' . $request->input('search') . '%');
-        }
-
-        $orders = $query->orderBy('id', 'desc')->with(['user', 'profile'])->paginate(10);
+        $orders = Order::orderBy('id', 'desc')->with(['user', 'profile'])->paginate(10);
         return view('orders.index')->with(['orders' => $orders]);
     }
 

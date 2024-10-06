@@ -14,16 +14,9 @@ use Illuminate\Support\Str;
 class PagesController extends Controller
 {
     // Display a list of pages
-    public function index(Request $request)
+    public function index()
     {
-
-        $query = Page::query();
-
-        if ($request->has('search')) {
-            $query->where('title', 'like', '%' . $request->input('search') . '%');
-        }
-
-        $pages = $query->orderBy('id', 'desc')->paginate(10);
+        $pages = Page::orderBy('id', 'desc')->paginate(10);
         return view('pages.index')->with(['pages' => $pages]);
     }
 

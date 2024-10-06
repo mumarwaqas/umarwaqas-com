@@ -13,16 +13,9 @@ use Illuminate\Support\Str;
 class WritersController extends Controller
 {
     // Display a list of writers
-    public function index(Request $request)
+    public function index()
     {
-
-        $query = Writer::query();
-
-        if ($request->has('search')) {
-            $query->where('name', 'like', '%' . $request->input('search') . '%');
-        }
-
-        $writers = $query->orderBy('id', 'desc')->paginate(10);
+        $writers = Writer::orderBy('id', 'desc')->paginate(10);
         return view('writers.index')->with(['writers' => $writers]);
     }
 

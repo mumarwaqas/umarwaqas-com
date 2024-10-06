@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use App\Http\Controllers\Controller;
 
 use App\Models\User;
@@ -9,6 +10,12 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Customer;
+=======
+use App\Models\Contact;
+use App\Models\Customer;
+use App\Models\Faq;
+use App\Models\Post;
+>>>>>>> parent of 53ecb51 (Latest)
 use App\Models\Page;
 use App\Models\Sample;
 use App\Models\Writer;
@@ -1076,7 +1083,11 @@ class WebPageController extends Controller
             ];
         // Pass the writer to the view
         // return view('webpage.home')->with(['meta' => $meta])->with(['writers' => $writers])->with(['samples' => $samples])->with(['customers' => $customers])->with(['faqs' => $faqs]);
+<<<<<<< HEAD
         return view('webpage.post')->with(['meta' => $meta])->with(['post' => $post])->with(['posts' => $posts]);
+=======
+        return view('webpage.post')->with(['meta' => $meta])->with(['post' => $post])->with(['relatedPosts' => $relatedPosts]);
+>>>>>>> parent of 53ecb51 (Latest)
     }
     public function category($slug)
     {

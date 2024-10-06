@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('title')->nullable();               // Name title
             $table->string('page_title')->nullable();          // Page title
+            $table->string('page_description')->nullable();    // Page description
             $table->string('slug')->unique();                  // URL slug
             $table->string('image')->nullable();               // Image slug
             $table->longText('content')->nullable();           // Page content

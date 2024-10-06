@@ -16,11 +16,18 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $posts = Post::paginate(10);
 
-        return view("admin.post.index", compact('posts'));
+    public function index(Request $request)
+    {
+
+        $query = Post::query();
+
+        if ($request->has('search')) {
+            $query->where('title', 'like', '%' . $request->input('search') . '%');
+        }
+
+        $posts = $query->orderBy('id', 'desc')->paginate(10);
+        return view('admin.post.index')->with(['posts' => $posts]);
     }
 
     /**

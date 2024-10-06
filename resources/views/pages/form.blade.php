@@ -5,6 +5,7 @@
     @endif
     <!-- Example: assuming user ID is from authenticated user -->
     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+
     <!-- Basic Information -->
     <div class="border border-gray-300 rounded-lg p-4 mb-8">
         <h2 class="text-lg font-semibold text-gray-800 mb-4">Basic Information</h2>
@@ -13,23 +14,29 @@
         <div class="mb-4">
             <label for="title" class="block text-gray-700 font-medium mb-2">Title</label>
             <input type="text" name="title" id="title" class="form-input mt-1 block w-full @error('title') border-red-500 @enderror" value="{{ old('title', $page->title ?? '') }}" onkeyup="generateSlug()">
+
+            <!-- Current host URL -->
+            <div class="mt-2">
+                <strong>Permalink:</strong>
+                <span id="permalink-url">{{ url('/') }}/<span id="slug-preview">{{ $page->slug ?? '' }}</span></span>
+                <button id="edit-slug-btn" type="button" class="text-blue-500 ml-2" onclick="editSlug()">Edit</button>
+            </div>
+
+            <div id="slug-edit-container" class="hidden mt-2">
+                <label for="slug" class="block text-gray-700 font-medium mb-2">Edit Slug</label>
+                <input type="text" name="slug" id="slug" class="form-input mt-1 block w-full @error('slug') border-red-500 @enderror" value="{{ old('slug', $page->slug ?? '') }}">
+                <button type="button" class="text-green-500 mt-2" onclick="saveSlug()">Save</button>
+                <button type="button" class="text-red-500 mt-2 ml-2" onclick="cancelEdit()">Cancel</button>
+            </div>
+
             @error('title')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror
-            <p class="text-gray-500 text-xs mt-1">Enter the title of the post. This will be displayed as the main heading.</p>
-        </div>
-
-        <!-- Slug -->
-        <div class="mb-4">
-            <label for="slug" class="block text-gray-700 font-medium mb-2">Slug</label>
-            <input type="text" name="slug" id="slug" class="form-input mt-1 block w-full @error('slug') border-red-500 @enderror" value="{{ old('slug', $page->slug ?? '') }}">
-            @error('slug')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-            @enderror
-            <p class="text-gray-500 text-xs mt-1">Enter a URL-friendly version of the title. This will be used in the URL of the post.</p>
+            <p class="text-gray-500 text-xs mt-1">Enter the title of the post.</p>
         </div>
     </div>
-    
+
+    <!-- Content Information -->
     <div class="border border-gray-300 rounded-lg p-4 mb-8">
         <h2 class="text-lg font-semibold text-gray-800 mb-4">Content Information</h2>
 
@@ -41,6 +48,16 @@
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror
             <p class="text-gray-500 text-xs mt-1">Enter the page title of the post. This will be displayed as the main heading.</p>
+        </div>
+
+        <!-- Page Description -->
+        <div class="mb-4">
+            <label for="page_description" class="block text-gray-700 font-medium mb-2">Page Description</label>
+            <input type="text" name="page_description" id="page_description" class="form-input mt-1 block w-full @error('page_description') border-red-500 @enderror" value="{{ old('page_description', $page->page_description ?? '') }}">
+            @error('page_description')
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
+            <p class="text-gray-500 text-xs mt-1">Enter the page description of the post. This will be displayed as the main heading.</p>
         </div>
 
         <!-- Content -->
@@ -400,14 +417,43 @@
         }
     });
 </script>
+
 <script>
     function generateSlug() {
-        var title = document.getElementById('title').value;
-        var slug = title.toLowerCase()
-                        .replace(/[^a-z0-9\s-]/g, '')   // Remove all non-alphanumeric characters except spaces and hyphens
-                        .replace(/\s+/g, '-')           // Replace spaces with hyphens
-                        .replace(/-+/g, '-');           // Replace multiple hyphens with a single one
-        document.getElementById('slug').value = slug;
+        const titleInput = document.getElementById('title');
+        const slugInput = document.getElementById('slug');
+        const slugPreview = document.getElementById('slug-preview');
+    
+        // Generate slug from title
+        let slug = titleInput.value
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9 -]/g, '')  // Remove special characters
+            .replace(/\s+/g, '-')          // Replace spaces with dashes
+            .replace(/--+/g, '-')          // Replace multiple dashes with a single dash
+            .replace(/^-|-$/g, '');        // Trim dashes from start and end
+    
+        slugInput.value = slug;         // Update the slug input field
+        slugPreview.innerText = slug;   // Update the slug preview
+    }
+    
+    function editSlug() {
+        document.getElementById('slug-edit-container').classList.remove('hidden'); // Show slug edit container
+        document.getElementById('slug-preview').parentElement.style.display = 'none'; // Hide permalink display
+    }
+    
+    function saveSlug() {
+        const slugInput = document.getElementById('slug');
+        const slugPreview = document.getElementById('slug-preview');
+    
+        slugPreview.innerText = slugInput.value; // Update preview with manual slug input
+        document.getElementById('slug-edit-container').classList.add('hidden'); // Hide slug edit container
+        document.getElementById('slug-preview').parentElement.style.display = 'inline'; // Show permalink display
+    }
+    
+    function cancelEdit() {
+        document.getElementById('slug-edit-container').classList.add('hidden'); // Hide slug edit container
+        document.getElementById('slug-preview').parentElement.style.display = 'inline'; // Show permalink display
     }
 </script>
 

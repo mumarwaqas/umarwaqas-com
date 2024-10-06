@@ -13,9 +13,16 @@ use Illuminate\Support\Str;
 class WritersController extends Controller
 {
     // Display a list of writers
-    public function index()
+    public function index(Request $request)
     {
-        $writers = Writer::orderBy('id', 'desc')->paginate(10);
+
+        $query = Writer::query();
+
+        if ($request->has('search')) {
+            $query->where('name', 'like', '%' . $request->input('search') . '%');
+        }
+
+        $writers = $query->orderBy('id', 'desc')->paginate(10);
         return view('writers.index')->with(['writers' => $writers]);
     }
 
@@ -29,20 +36,26 @@ class WritersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            // Add validation rules here
-            'slug'          => 'required|string|unique:writers',
-            'writer_no'     => 'required|string|unique:writers',
-            'image'         => 'required|image|mimes:jpeg,png,jpg,webp,gif|max:2048',
+            'slug'          => 'required|string|unique:writers,slug',
+            'writer_no'     => 'required|string|unique:writers,writer_no',
+            'image'         => 'nullable|image|mimes:jpeg,png,jpg,webp,gif|max:2048', // Optional image field
             'name'          => 'required|string|max:50',
             'about'         => 'nullable|string|max:500',
-            'education'     => 'required|string|max:50',
-            'experience'    => 'nullable|string',
+            'education'     => 'nullable|string|max:50', // Made this nullable as per your schema
+            'profession'    => 'nullable|string|max:50', // Added validation for profession
+            'status'        => 'nullable|string|max:50', // Added validation for status
+            'experience'    => 'nullable|string|min:0', // Validating experience as an integer
             'rating'        => 'nullable|numeric|min:0|max:5',
-            'reviews'       => 'nullable|numeric|min:0',
-            'orders'        => 'nullable|numeric|min:0',
+            'review'        => 'nullable|numeric|min:0|5000', // Adjusted to reflect the schema
             'success_rate'  => 'nullable|numeric|between:0,100',
-            'competences'   => 'nullable|string',
-            'online'        => 'nullable|boolean',
+            'on_time_rate'  => 'nullable|numeric|between:0,100', // Added validation for on_time_rate
+            'orders'        => 'nullable|integer|min:0',
+            'delivery'      => 'nullable|string',
+            'competences'   => 'nullable|string', // Changed to json validation
+            'works'         => 'nullable|string', // Changed to json validation
+            'subjects'      => 'nullable|string', // Added validation for subjects
+            'online'        => 'nullable|string',
+            'reviews'       => 'nullable|string',
             'user_id'       => 'required|exists:users,id',
         ]);
 
@@ -112,21 +125,29 @@ class WritersController extends Controller
     
         // Validate the request data
         $request->validate([
-            'slug'          => 'required|string|unique:writers,slug,' . $writer->id,
-            'writer_no'     => 'required|string|unique:writers,writer_no,' . $writer->id,
-            'image'         => 'image|mimes:jpeg,png,jpg,webp,gif|max:2048',
+            'slug'          => 'required|string|unique:writers,slug,' . ($writer->id ?? 'NULL'),
+            'writer_no'     => 'required|string|unique:writers,writer_no,' . ($writer->id ?? 'NULL'),
+            'image'         => 'nullable|image|mimes:jpeg,png,jpg,webp,gif|max:2048', // Optional image field
+            'name'          => 'required|string|max:50',
             'about'         => 'nullable|string|max:500',
-            'education'     => 'required|string|max:50',
-            'experience'    => 'nullable|string',
+            'education'     => 'nullable|string|max:50', // Made this nullable as per your schema
+            'profession'    => 'nullable|string|max:50', // Added validation for profession
+            'status'        => 'nullable|string|max:50', // Added validation for status
+            'experience'    => 'nullable|string|min:0', // Validating experience as an integer
             'rating'        => 'nullable|numeric|min:0|max:5',
-            'reviews'       => 'nullable|numeric|min:0',
-            'orders'        => 'nullable|numeric|min:0',
+            'review'        => 'nullable|numeric|min:0|max:5000', // Adjusted to reflect the schema
             'success_rate'  => 'nullable|numeric|between:0,100',
-            'competences'   => 'nullable|string',
-            'online'        => 'nullable|boolean',
+            'on_time_rate'  => 'nullable|numeric|between:0,100', // Added validation for on_time_rate
+            'orders'        => 'nullable|integer|min:0',
+            'delivery'      => 'nullable|string',
+            'competences'   => 'nullable|string', // Changed to json validation
+            'works'         => 'nullable|string', // Changed to json validation
+            'subjects'      => 'nullable|string', // Added validation for subjects
+            'online'        => 'nullable|string',
+            'reviews'       => 'nullable|string',
             'user_id'       => 'required|exists:users,id',
         ]);
-    
+            
 
         // Handle image upload
         if ($request->hasFile('image')) {

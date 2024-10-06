@@ -13,9 +13,15 @@ use Illuminate\Support\Str;
 class CustomersController extends Controller
 {
     // Display a list of customer
-    public function index()
+    public function index(Request $request)
     {
-        $customers = Customer::orderBy('id', 'desc')->paginate(10);
+        $query = Customer::query();
+
+        if ($request->has('search')) {
+            $query->where('name', 'like', '%' . $request->input('search') . '%');
+        }
+        
+        $customers = $query->orderBy('id', 'desc')->paginate(10);
         return view('customers.index')->with(['customers' => $customers]);
     }
 

@@ -7,14 +7,8 @@ use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\WritersController;
 use App\Http\Controllers\Admin\SamplesController;
 use App\Http\Controllers\Admin\CustomersController;
-<<<<<<< HEAD
+use App\Http\Controllers\Admin\FaqsController;
 
-<<<<<<< HEAD
-=======
->>>>>>> parent of ee563be (Latest)
-
-=======
->>>>>>> parent of fc9fe7c (Latest)
 use App\Http\Controllers\Admin\PagesController;
 
 use App\Http\Controllers\OrderController;
@@ -75,6 +69,11 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
 
+    // Ckeditor
+    Route::post('/ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
+    Route::get('/ckeditor/files', [CKEditorController::class, 'list'])->name('ckeditor.files');
+    Route::delete('/ckeditor/files/{filename}', [CKEditorController::class, 'delete'])->name('ckeditor.delete');
+    
     // Categories
     Route::resource("/categories", CategoriesController::class)
         ->names([
@@ -127,6 +126,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/writers',            [WritersController::class, 'store'])->name('writers.store');
     Route::put('/writers/{id}',        [WritersController::class, 'update'])->name('writers.update');
     Route::delete('/writers/{writer}', [WritersController::class, 'destroy'])->name('writers.destroy')->withTrashed();
+
+    // Faqs
+    Route::get('/faqs',            [FaqsController::class, 'index'])->name('faqs.index');
+    Route::get('/faqs/add',        [FaqsController::class, 'create'])->name('faqs.add');
+    Route::get('/faqs/edit/{id}',  [FaqsController::class, 'edit'])->name('faqs.edit');
+    Route::get('/faqs/show/{id}',  [FaqsController::class, 'show'])->name('faqs.show');
+
+    Route::post('/faqs',            [FaqsController::class, 'store'])->name('faqs.store');
+    Route::put('/faqs/{id}',        [FaqsController::class, 'update'])->name('faqs.update');
+    Route::delete('/faqs/{faq}',    [FaqsController::class, 'destroy'])->name('faqs.destroy')->withTrashed();
 
     // Customers
     Route::get('/customers',            [CustomersController::class, 'index'])->name('customers.index');

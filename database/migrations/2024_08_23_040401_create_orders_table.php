@@ -37,7 +37,7 @@ class CreateOrdersTable extends Migration
             $table->string('ai_file', 500)->nullable();
             $table->string('plagiarism_file', 500)->nullable();
             $table->string('grammarly_file', 500)->nullable();
-            $table->string('attachment', 255)->nullable();
+            $table->string('attachment', 1000)->nullable();
             $table->string('coupon_code')->nullable();
             $table->string('actual_price', 255)->nullable();
             $table->string('discounted_price', 255)->nullable();

@@ -1,193 +1,223 @@
 @extends('layouts.web')
+ 
+@section('title', $meta['title'])
 
-@section('title')
-Contact Us
+@section('meta')
+    <meta name="description" content="{{ $meta['description'] }}">
+    <meta name="keywords" content="{{ $meta['keywords'] }}">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{{ $meta['og']['type'] }}">
+    <meta property="og:locale" content="{{ $meta['og']['locale'] }}">
+    <meta property="og:site_name" content="{{ $meta['og']['site_name'] }}">
+    <meta property="og:url" content="{{ $meta['og']['url'] }}">
+    <meta property="og:image" content="{{ $meta['og']['image'] }}">
+    <meta property="og:image:type" content="{{ $meta['og']['image_type'] }}">
+    <meta property="og:description" content="{{ $meta['og']['description'] }}">
+    <!-- Twitter -->
+    <meta name="twitter:title" content="{{ $meta['twitter']['title'] }}">
+    <meta name="twitter:card" content="{{ $meta['twitter']['card'] }}">
+    <meta name="twitter:description" content="{{ $meta['twitter']['description'] }}">
+    <meta name="twitter:image" content="{{ $meta['twitter']['image'] }}">
 @endsection
 
 @section('head')
-<!-- General Meta Tags -->
-        <meta name="description" content="This is the Our Reviews page of our website.">
-        <meta name="keywords" content="Our Reviews, welcome, main page">
-
-        <!-- Open Graph Meta Tags -->
-        <meta property="og:title" content="Our Reviews Page">
-        <meta property="og:description" content="This is the Our Reviews page of our website.">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:image" content="{{ asset('images/discount-page.png') }}">
-
-        <!-- Twitter Meta Tags -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Our Reviews Page">
-        <meta name="twitter:description" content="This is the Our Reviews page of our website.">
-        <meta name="twitter:image" content="{{ asset('images/discount-page.png') }}">
-        <meta name="twitter:site" content="@YourTwitterHandle">
 @endsection
 
 @section('footer_scripts')
-
-@endsection
-
-@section('inner_page_hero_section_title')
-Contact Us
-@endsection
-
-@section('inner_page_hero_section_mini_title')
-Contact Us
 @endsection
 
 @section('content')
+    <div>
+        <div class="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:sticky lg:top-24">
+            <x-intro />
+        </div>    
+    </div>
 
-    <!-- ===================================================== -->
-    <!-- ================ hero section start ===================== -->
-    @include('partials.inner-pages-hero-section')
-    <!-- ================ hero section end ======================= -->
-    <!-- ===================================================== -->
+<div class="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-2 lg:p-10">
+    <div class="">
+        <h2 class="text-3xl font-semibold leading-tight text-dark dark:text-light lg:text-[40px] lg:leading-tight"> Let's 👋 <span class="text-primary">Work</span> Together </h2>
+        <p class="mt-4 text-lg text-muted dark:text-light/70"> I'm here to help if you're searching for a product designer to bring your idea to life or a design partner to help take your business to the next level. </p>
+        <div class="mt-6 flex flex-wrap gap-2">
+            <a href="#" class="inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-primary px-6 py-4 font-medium text-white transition hover:bg-blue-600 focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" class="h-6 w-6">
+                    <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Zm10 3a2 2 0 0 1 2 2m-2-6a6 6 0 0 1 6 6"></path>
+                </svg>
+                <span>Book A Call</span>
+            </a>
+            <button type="button" data-clipboard-text="{{ $email }}" data-clipboard-action="copy" data-clipboard-success-text="Copied to clipboard" class="js-clipboard hs-tooltip inline-flex items-center gap-x-2 rounded-lg border border-light bg-transparent px-6 py-4 font-medium text-dark transition [--trigger:focus] hover:bg-light focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50 dark:border-dark dark:text-light/70 dark:hover:bg-dark dark:hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" class="h-6 w-6">
+                    <path d="M8 10a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-8Z"></path>
+                    <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path>
+                </svg>
+                <span>Copy Email</span>
+                <span class="hs-tooltip-content invisible z-10 hidden rounded-lg bg-gray-900 px-2 py-1 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hs-tooltip-shown:visible hs-tooltip-shown:opacity-100 dark:bg-slate-700" role="tooltip" data-popper-placement="top" style="position: fixed; inset: auto auto 0px 0px; margin: 0px; transform: translate(1049px, -264px);">Copied to clipboard </span>
+            </button>
+        </div>
+    </div>
+    <div class="mt-10 lg:mt-14">
+        <form id="" method="POST" action="{{ route('contact.store') }}" class="space-y-6 rounded-lg bg-light p-6">
+            @csrf
+            <div class="">
+                <label for="name" class="mb-2 block text-sm font-medium text-dark dark:text-light"> Name </label>
+                <input required="" type="text" id="name" name="name" placeholder="Enter your name" class="block w-full rounded-lg border border-gray-200 bg-white px-6 py-4 text-base outline-none transition focus:border-dark focus:ring focus:ring-dark/20 disabled:pointer-events-none disabled:opacity-50 dark:border-dark dark:bg-black dark:text-white dark:focus:border-muted dark:focus:ring-white/20">
+            </div>
 
-    <!-- ===================================================== -->
-    <!-- ================ Contact section start ======================= -->
-    <section id="contact-us-page-section">
-        <div class="container">
-            <div class="title">
-                <h3>We are eager to help you</h3>
-            </div>
-            <div class="content">
-                <p>dissertation help online always available round the clock. No matter at what time you need assignment help from us, you just have to ask us and you would be getting an instant response. Our dissertation writing service has got everything to cover what you need from us!</p>
-            </div>
-            <div class="contant-call-btn">
-                <div class="hero-btn">
-                    <a class="tranperant-bg-btn" href="tel:{{ config('settings.app_phone') }}">
-                        <div class="img-container">
-                            <img src="{{ asset('assets/images/call-bg-black-white.webp') }}" loading="lazy" class="img-fluid" height="26.53px" width="26.353px" alt="Call Now">
-                        </div>
-                        {{ config('settings.app_phone') }}
-                    </a>
-                    <a href="tel:{{ config('settings.app_phone') }}" class="bg-black-btn">call me your query</a>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div class="">
+                    <label for="email" class="mb-2 block text-sm font-medium text-dark dark:text-light"> Email </label>
+                    <input required="" type="email" id="email" name="email" placeholder="Enter your email" class="block w-full rounded-lg border border-gray-200 bg-white px-6 py-4 text-base outline-none transition focus:border-dark focus:ring focus:ring-dark/20 disabled:pointer-events-none disabled:opacity-50 dark:border-dark dark:bg-black dark:text-white dark:focus:border-muted dark:focus:ring-white/20">
+                </div>
+                <div class="">
+                    <label for="phone" class="mb-2 block text-sm font-medium text-dark dark:text-light"> Phone </label>
+                    <input required="" type="text" id="phone" name="phone" placeholder="Enter your phone" class="block w-full rounded-lg border border-gray-200 bg-white px-6 py-4 text-base outline-none transition focus:border-dark focus:ring focus:ring-dark/20 disabled:pointer-events-none disabled:opacity-50 dark:border-dark dark:bg-black dark:text-white dark:focus:border-muted dark:focus:ring-white/20">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xl-4">
-                    <div class="contact-page-left">
-                        <div class="contact-page-card">
-                            <div class="img-title">
-                                <div class="img-container bg-white">
-                                    <img src="{{ asset('assets/images/call-bg-black-pink.webp') }}" height="32px" width="32px" loading="lazy" class="img-fluid" alt="Call Now">
-                                </div>
-                                <h5>Phone</h5>
-                            </div>
-                            <div class="content">
-                                <p>Our customer care is open 24/7 Online Support</p>
-                                <a href="tel:{{ config('settings.app_phone') }}">{{ config('settings.app_phone') }}</a>
-                            </div>
-                        </div>
-                        <div class="contact-page-card">
-                            <div class="img-title">
-                                <div class="img-container bg-white">
-                                    <img src="{{ asset('assets/images/mail-bg-white-orange.webp') }}" height="24px" width="34px" loading="lazy" class="img-fluid" alt="Mail">
-                                </div>
-                                <h5>Mail Address</h5>
-                            </div>
-                            <div class="content">
-                                <p>Our support team will get back to in 24-hr during standard business hours.</p>
-                                <a href="mailto:{{ config('settings.app_email') }}">{{ config('settings.app_email') }}</a>
-                            </div>
-                        </div>
-                        <div class="contact-page-card">
-                            <div class="img-title">
-                                <div class="img-container bg-white">
-                                    <img src="{{ asset('assets/images/location-bg-white-purple.webp') }}" alt="Location" height="33px" width="25px" loading="lazy" class="img-fluid">
-                                </div>
-                                <h5>Location</h5>
-                            </div>
-                            <div class="content">
-                                <p class="contant-card-mini">{{ config('settings.app_address') }}</p>
-                            </div>
-                        </div>
-                        <div class="contact-page-card">
-                            <div class="img-title">
-                                <div class="img-container bg-white">
-                                    <img src="{{ asset('assets/images/working-hour-icon.webp') }}" alt="Working Hour" height="35px" width="35px" loading="lazy" class="img-fluid">
-                                </div>
-                                <h5>Working hours</h5>
-                            </div>
-                            <div class="content">
-                                <p class="contant-card-mini">Mon 00:00 to Sun 23:59</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-8">
-                    <div class="contact-us-form-container">
-                        @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
-                        @if(session('success'))
-                        <div class="status alert alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                        @endif
-                        <form method="POST" action="{{ route('contact.save') }}" enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-group">
-                                <input type="text" name="name" placeholder="Enter your full name" value="{{ old('name') }}">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" name="email" placeholder="Enter your email" value="{{ old('email') }}">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="subject" placeholder="Enter your subject" value="{{ old('subject') }}">
-                            </div>
-                            <div class="form-group">
-                                <input type="file" name="file" placeholder="Choose File...">
-                            </div>
-                            <div class="form-group">
-                                <textarea name="message" id="" rows="4" cols="5 " placeholder="Message">{{ old('message') }}</textarea>
-                            </div>
-                            <div class="form-group checkbox-container">
-                                <label><input type="checkbox" name="Privacy" class="contant-form-checkbox"> I Agree to Terms of Use and the Privacy Policy.</label>
-                            </div>
-                            <div class="form-group">
-                                <div class="primary-btn yellow-bg-btn">
-                                    <button type="submit">Submit</button>
-                                </div>
-                            </div>
-                        </form>
+            <div class="">
+                <label for="message" class="mb-2 block text-sm font-medium text-dark dark:text-light"> Message </label>
+                <textarea required="" id="message" name="message" placeholder="Type details about your inquiry" rows="4" class="block w-full rounded-lg border border-gray-200 bg-white px-6 py-4 text-base outline-none transition focus:border-dark focus:ring focus:ring-dark/20 disabled:pointer-events-none disabled:opacity-50 dark:border-dark dark:bg-black dark:text-white dark:focus:border-muted dark:focus:ring-white/20"></textarea>
+            </div>
+            <button type="submit" class="inline-flex w-full items-center justify-center gap-x-2 rounded-lg border border-transparent bg-primary px-6 py-4 text-center font-medium text-white transition hover:bg-blue-600 focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50">
+                <span>Send Message</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" class="h-5 w-5">
+                    <path d="M17.5 11.667v-5h-5"></path>
+                    <path d="m17.5 6.667-7.5 7.5-7.5-7.5"></path>
+                </svg>
+            </button>
+            @if(session('success'))
+            <div class="status alert alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
+        </form>
+    </div>
+    <div class="mt-10 aspect-video overflow-hidden rounded-lg lg:mt-14">
+        <iframe src="{{ json_decode( $location, true )['map'] }}" width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="h-full w-full object-cover" style="border: 0px;"></iframe>
+    </div>
+    <div class="mt-10 lg:mt-14">
+        <h3 class="text-2xl font-medium text-dark dark:text-light lg:text-3xl"> Frequently Asked Questions </h3>
+        <div class="hs-accordion-group mt-8 space-y-4">
+            <div class="hs-accordion rounded-lg border border-transparent bg-light transition hs-accordion-active:border-light hs-accordion-active:bg-white dark:border-transparent dark:bg-dark-2 dark:hs-accordion-active:border-dark-2 dark:hs-accordion-active:bg-black">
+                <button class="hs-accordion-toggle inline-flex w-full items-center justify-between gap-x-3 px-6 py-5 text-start text-lg font-medium text-dark transition hover:text-muted disabled:pointer-events-none disabled:opacity-50 hs-accordion-active:text-primary dark:text-light/70 dark:hover:text-light dark:focus:outline-none dark:hs-accordion-active:text-primary xl:text-2xl">
+                    <span>What does a product designer need to know?</span>
+                    <span class="grid h-8 w-8 shrink-0 place-content-center rounded bg-white text-primary hs-accordion-active:bg-light dark:bg-black dark:hs-accordion-active:bg-dark-2">
+                        <svg class="block h-3.5 w-3.5 hs-accordion-active:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="M12 5v14"></path>
+                        </svg>
+                        <svg class="hidden h-3.5 w-3.5 hs-accordion-active:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                        </svg>
+                    </span>
+                </button>
+                <div class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+                    <div class="px-6 pb-5">
+                        <p class="text-base xl:text-lg">I'm here to help if you're searching for a product designer to bring your idea to life or a design partner to help take your business to the next level.</p>
                     </div>
                 </div>
             </div>
-            <div class="contact-bottom-content">
-                <p>Our writing service has saved over 50,000 awesome students from <br> looming deadlines – Let Us Do The Same For You !</p>
-                <div class="order-btn">
-                    <div class="top-nav-menu-side-btns btns-flex">
-                        <div class="primary-btn yellow-bg-btn">
-                            <img src="{{ asset('assets/images/order-now-icon-black.webp') }}" loading="lazy" class="img-fluid" height="25.3px" width="26.325px" alt="Live Chat">
-                            <a href="{{ route('order-now') }}">Click Here to Order</a>
-                        </div>
+            <div
+                class="hs-accordion active rounded-lg border border-transparent bg-light transition hs-accordion-active:border-light hs-accordion-active:bg-white dark:border-transparent dark:bg-dark-2 dark:hs-accordion-active:border-dark-2 dark:hs-accordion-active:bg-black">
+                <button
+                    class="hs-accordion-toggle inline-flex w-full items-center justify-between gap-x-3 px-6 py-5 text-start text-lg font-medium text-dark transition hover:text-muted disabled:pointer-events-none disabled:opacity-50 hs-accordion-active:text-primary dark:text-light/70 dark:hover:text-light dark:focus:outline-none dark:hs-accordion-active:text-primary xl:text-2xl"><span>What
+                        does a product designer need to know?</span><span
+                        class="grid h-8 w-8 shrink-0 place-content-center rounded bg-white text-primary hs-accordion-active:bg-light dark:bg-black dark:hs-accordion-active:bg-dark-2"><svg
+                            class="block h-3.5 w-3.5 hs-accordion-active:hidden" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="M12 5v14"></path>
+                        </svg><svg class="hidden h-3.5 w-3.5 hs-accordion-active:block"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                        </svg></span></button>
+                <div class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300">
+                    <div class="px-6 pb-5">
+                        <p class="text-base xl:text-lg"> I'm here to help if you're searching for a product designer to
+                            bring your idea to life or a design partner to help take your business to the next level.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="hs-accordion rounded-lg border border-transparent bg-light transition hs-accordion-active:border-light hs-accordion-active:bg-white dark:border-transparent dark:bg-dark-2 dark:hs-accordion-active:border-dark-2 dark:hs-accordion-active:bg-black">
+                <button
+                    class="hs-accordion-toggle inline-flex w-full items-center justify-between gap-x-3 px-6 py-5 text-start text-lg font-medium text-dark transition hover:text-muted disabled:pointer-events-none disabled:opacity-50 hs-accordion-active:text-primary dark:text-light/70 dark:hover:text-light dark:focus:outline-none dark:hs-accordion-active:text-primary xl:text-2xl"><span>What
+                        does a product designer need to know?</span><span
+                        class="grid h-8 w-8 shrink-0 place-content-center rounded bg-white text-primary hs-accordion-active:bg-light dark:bg-black dark:hs-accordion-active:bg-dark-2"><svg
+                            class="block h-3.5 w-3.5 hs-accordion-active:hidden" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="M12 5v14"></path>
+                        </svg><svg class="hidden h-3.5 w-3.5 hs-accordion-active:block"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                        </svg></span></button>
+                <div class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+                    <div class="px-6 pb-5">
+                        <p class="text-base xl:text-lg"> I'm here to help if you're searching for a product designer to
+                            bring your idea to life or a design partner to help take your business to the next level.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="hs-accordion rounded-lg border border-transparent bg-light transition hs-accordion-active:border-light hs-accordion-active:bg-white dark:border-transparent dark:bg-dark-2 dark:hs-accordion-active:border-dark-2 dark:hs-accordion-active:bg-black">
+                <button
+                    class="hs-accordion-toggle inline-flex w-full items-center justify-between gap-x-3 px-6 py-5 text-start text-lg font-medium text-dark transition hover:text-muted disabled:pointer-events-none disabled:opacity-50 hs-accordion-active:text-primary dark:text-light/70 dark:hover:text-light dark:focus:outline-none dark:hs-accordion-active:text-primary xl:text-2xl"><span>What
+                        does a product designer need to know?</span><span
+                        class="grid h-8 w-8 shrink-0 place-content-center rounded bg-white text-primary hs-accordion-active:bg-light dark:bg-black dark:hs-accordion-active:bg-dark-2"><svg
+                            class="block h-3.5 w-3.5 hs-accordion-active:hidden" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="M12 5v14"></path>
+                        </svg><svg class="hidden h-3.5 w-3.5 hs-accordion-active:block"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                        </svg></span></button>
+                <div class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+                    <div class="px-6 pb-5">
+                        <p class="text-base xl:text-lg"> I'm here to help if you're searching for a product designer to
+                            bring your idea to life or a design partner to help take your business to the next level.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="hs-accordion rounded-lg border border-transparent bg-light transition hs-accordion-active:border-light hs-accordion-active:bg-white dark:border-transparent dark:bg-dark-2 dark:hs-accordion-active:border-dark-2 dark:hs-accordion-active:bg-black">
+                <button
+                    class="hs-accordion-toggle inline-flex w-full items-center justify-between gap-x-3 px-6 py-5 text-start text-lg font-medium text-dark transition hover:text-muted disabled:pointer-events-none disabled:opacity-50 hs-accordion-active:text-primary dark:text-light/70 dark:hover:text-light dark:focus:outline-none dark:hs-accordion-active:text-primary xl:text-2xl"><span>What
+                        does a product designer need to know?</span><span
+                        class="grid h-8 w-8 shrink-0 place-content-center rounded bg-white text-primary hs-accordion-active:bg-light dark:bg-black dark:hs-accordion-active:bg-dark-2"><svg
+                            class="block h-3.5 w-3.5 hs-accordion-active:hidden" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="M12 5v14"></path>
+                        </svg><svg class="hidden h-3.5 w-3.5 hs-accordion-active:block"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                        </svg></span></button>
+                <div class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+                    <div class="px-6 pb-5">
+                        <p class="text-base xl:text-lg"> I'm here to help if you're searching for a product designer to
+                            bring your idea to life or a design partner to help take your business to the next level.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-     </section>
-    <!-- ================ Contact Features section end ======================= -->
-    <!-- ===================================================== -->
-
-
-    <!-- ===================================================== -->
-    <!-- ===============  Testimonials section start ================ -->
-    @include('partials.testimonials-section')
-    <!-- ===============  Testimonials section end ================ -->
-    <!-- ===================================================== -->
-
-    <!-- ===================================================== -->
-    <!-- ===============  Faqs section start ================ -->
-    @include('partials.faqs-section')
-    <!-- ===============  Faqs section end ================ -->
-    <!-- ===================================================== -->
+    </div>
+    <div class="mt-10 lg:mt-14">
+        @include('partials.contact')
+    </div>
+</div>
 
 @endsection
+
+

@@ -26,20 +26,27 @@ class WriterSeeder extends Seeder
             $data = array_combine($header, $row);
             
             Writer::create([
-                'user_id'  => $data['user_id'],
+                'user_id' => $data['user_id'],
                 'slug' => Str::slug($data['name']),
                 'writer_no' => $data['writer_no'],
                 'name' => $data['name'],
                 'image' => $data['image'],
                 'about' => $data['about'],
                 'education' => $data['education'],
-                'experience' => $data['experience'],
-                'rating' => $data['rating'],
-                'reviews' => $data['reviews'],
-                'orders' => $data['orders'],
-                'success_rate' => $data['success_rate'],
-                'competences' => $data['competences'],
+                'profession' => $data['profession'],
+                'status' => $data['status'],
                 'online' => $data['online'],
+                'competences' => $data['competences'],
+                'works'=> $data['works'],
+                'orders' => $data['orders'],
+                'review' => $data['review'],
+                'rating' => $data['rating'],
+                'success_rate' => $data['success_rate'],
+                'on_time_rate' => $data['on_time_rate'],
+                'delivery' => $data['delivery'],
+                'subjects' => $data['subjects'],
+                'experience' => $data['experience'],
+                'reviews' => $data['reviews'],
             ]);
         }
     }

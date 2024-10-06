@@ -3,117 +3,77 @@
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\PostsController;
 
-use App\Http\Controllers\Admin\CKEditorController;
-
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\WritersController;
 use App\Http\Controllers\Admin\SamplesController;
 use App\Http\Controllers\Admin\CustomersController;
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 =======
 >>>>>>> parent of ee563be (Latest)
 
+=======
+>>>>>>> parent of fc9fe7c (Latest)
 use App\Http\Controllers\Admin\PagesController;
 
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\WebPageController;
-use App\Http\Controllers\AdminCommandController;
+use App\Http\Controllers\CommandController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/admin', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('routelist', [AdminCommandController::class, 'routeList']);
+
+Route::get('/routelist',        [CommandController::class, 'routeList']);
+
+Route::get('/migrate',          [CommandController::class, 'migrate']);
+Route::get('/migrate/install',  [CommandController::class, 'migrateInstall']);
+Route::get('/migrate/fresh',    [CommandController::class, 'migrateFresh']);
+Route::get('/migrate/rollback', [CommandController::class, 'migrateRllback']);
+
+Route::get('/writer/seed',      [CommandController::class, 'writerSeed']);
+Route::get('/order/seed',       [CommandController::class, 'orderSeeder']);
+Route::get('/seed',             [CommandController::class, 'seed']);
+
+Route::get('/clear/all/cache',  [CommandController::class, 'clearAllCache']);
+
+Route::get('/clear/cache',      [CommandController::class, 'clearCache']);
+Route::get('/clear/config/cache', [CommandController::class, 'clearConfigCache']);
+Route::get('/clear/route/cache',[CommandController::class, 'clearRouteCache']);
+Route::get('/clear/view/cache', [CommandController::class, 'clearViewCache']);
+Route::get('/cache/config',     [CommandController::class, 'cacheConfig']);
+Route::get('/cache/routes',     [CommandController::class, 'cacheRoutes']);
+Route::get('/cache/views',      [CommandController::class, 'cacheViews']);
+Route::get('/cache/status',     [CommandController::class, 'cacheStatus']);
 
 
-Route::get('/migrate', [AdminCommandController::class, 'migrate']);
-Route::get('/migratefresh', [AdminCommandController::class, 'migrateFresh']);
-Route::get('/migraterollback', [AdminCommandController::class, 'migrateRllback']);
-
-Route::get('/writer/seed', [AdminCommandController::class, 'writerSeed']);
-Route::get('/order/seed', [AdminCommandController::class, 'orderSeeder']);
-Route::get('/seed', [AdminCommandController::class, 'seed']);
-
-Route::get('/clear-all-cache', [AdminCommandController::class, 'clearAllCache']);
-
-Route::get('/clear-cache', [AdminCommandController::class, 'clearCache']);
-Route::get('/clear-config-cache', [AdminCommandController::class, 'clearConfigCache']);
-Route::get('/clear-route-cache', [AdminCommandController::class, 'clearRouteCache']);
-Route::get('/clear-view-cache', [AdminCommandController::class, 'clearViewCache']);
-Route::get('/cache-config', [AdminCommandController::class, 'cacheConfig']);
-Route::get('/cache-routes', [AdminCommandController::class, 'cacheRoutes']);
-Route::get('/cache-views', [AdminCommandController::class, 'cacheViews']);
-Route::get('/cache-status', [AdminCommandController::class, 'cacheStatus']);
+Route::get('/export-meta-data', [WebPageController::class, 'exportMetaData']);
 
 
-Route::get('/', [WebPageController::class, 'home'])->name('home');
-Route::get('/about', [WebPageController::class, 'about'])->name('about');
-Route::get('/discount', [WebPageController::class, 'discount'])->name('discount');
-Route::get('/how-its-works', [WebPageController::class, 'how_its_works'])->name('how-its-works');
-Route::get('/guarantees', [WebPageController::class, 'guarantees'])->name('guarantees');
-Route::get('/faqs', [WebPageController::class, 'faqs'])->name('faqs');
-Route::get('/frequently-asked-question', [WebPageController::class, 'faqs'])->name('faqs');
+Route::get('/',         [WebPageController::class, 'home'])->name('home');
+Route::get('/about',    [WebPageController::class, 'about'])->name('about');
+Route::get('/services', [WebPageController::class, 'services'])->name('services');
+Route::get('/work',     [WebPageController::class, 'work'])->name('work');
+Route::get('/contact',  [WebPageController::class, 'contact'])->name('contact');
+Route::post('/contact', [WebPageController::class, 'store'])->name('contact.store');
 
-
-Route::get('/our-samples', [WebPageController::class, 'samples'])->name('samples');
-Route::get('/sample/{slug}', [WebPageController::class, 'sample'])->name('sample');
-
-Route::get('/our-writers', [WebPageController::class, 'writers'])->name('writers');
-Route::get('/writer/{slug}', [WebPageController::class, 'writer'])->name('writer');
-
-Route::get('/our-reviews', [WebPageController::class, 'reviews'])->name('reviews');
-
-Route::get('/refund-policy', [WebPageController::class, 'refundpolicy'])->name('refundpolicy');
-Route::get('/terms-and-conditions', [WebPageController::class, 'termsandconditions'])->name('termsandconditions');
-Route::get('/fair-use-policy', [WebPageController::class, 'fairusepolicy'])->name('fairusepolicy');
-Route::get('/money-back-guarantee', [WebPageController::class, 'moneybackguarantee'])->name('moneybackguarantee');
-Route::get('/privacy-policy', [WebPageController::class, 'privacypolicy'])->name('privacypolicy');
-Route::get('/cookie-policy', [WebPageController::class, 'cookiepolicy'])->name('cookiepolicy');
-
-
-Route::get('/prices', [WebPageController::class, 'prices'])->name('prices');
-Route::get('/services',       [WebPageController::class, 'services'])->name('services');
-
-
-Route::get('/contact-us', [WebPageController::class, 'contact'])->name('contact');
-Route::post('/contact-us/save', [WebPageController::class, 'save'])->name('contact.save');
-
-Route::get('/blogs', [WebPageController::class, 'posts'])->name('posts');
+Route::get('/blog',     [WebPageController::class, 'posts'])->name('posts');
+Route::get('/blogs',    [WebPageController::class, 'posts'])->name('posts');
 Route::get('/blog/{slug}', [WebPageController::class, 'post'])->name('post');
 
 Route::get('/category/{slug}', [WebPageController::class, 'category'])->name('category');
 Route::get('/author/{slug}', [WebPageController::class, 'author'])->name('author');
 
-Route::get('/order-now', [OrderController::class, 'create'])->name('order-now');
-Route::get('/order-preview', [OrderController::class, 'preview'])->name('order-preview');
-
-Route::get('/{slug}', [WebPageController::class, 'service'])->name('service');
-
-// 404 Page for Form Submission Route
-Route::get('/404', [WebPageController::class, 'show404'])->name('404');
-
-// Thank You Page for Form Submission Route
-Route::get('/thank-you', [WebPageController::class, 'showThankYou'])->name('thank-you')->middleware('submitted');
-
-// Thank You Page for Another Scenario (e.g., Purchase) Route
-Route::get('/thank-you-2', [WebPageController::class, 'showThankYouPurchase'])->name('thank-you.purchase');
-
-Route::post('/store', [OrderController::class, 'store'])->name('store');
-
-Route::post('/file-upload', [OrderController::class, 'upload'])->name('file.upload');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->prefix('admin')->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->prefix('admin')->group(function () {
+Route::middleware('auth')->group(function () {
 
     // Categories
     Route::resource("/categories", CategoriesController::class)

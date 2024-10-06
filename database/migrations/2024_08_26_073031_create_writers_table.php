@@ -20,13 +20,21 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->longText('about')->nullable();
             $table->string('education')->nullable();
-            $table->string('experience')->nullable();
-            $table->string('rating')->nullable();
-            $table->string('reviews')->nullable();
-            $table->string('orders')->nullable();
-            $table->string('success_rate')->nullable();
-            $table->string('competences')->nullable();
+            $table->string('profession')->nullable();
+            $table->string('status')->nullable();
             $table->string('online')->nullable();
+            $table->string('competences')->nullable();
+            $table->string('works')->nullable();
+            $table->string('orders')->nullable();
+            $table->string('review')->nullable();
+            $table->string('rating')->nullable();
+            $table->string('success_rate')->nullable();
+            $table->string('on_time_rate')->nullable();
+            $table->string('delivery')->nullable();
+            $table->string('subjects')->nullable();
+            $table->string('experience')->nullable();
+            $table->longText('reviews')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
         });

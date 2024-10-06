@@ -15,20 +15,27 @@ class Writer extends Model
 
     // Specify the attributes that are mass assignable
     protected $fillable = [
-        'user_id',
-        'slug',
-        'writer_no',
-        'image',
-        'name',
-        'about',
-        'education',
-        'experience',
-        'rating',
-        'reviews',
-        'orders',
-        'success_rate',
-        'competences',
-        'online',
+            'user_id',
+            'slug', 
+            'writer_no', 
+            'image', 
+            'name', 
+            'about', 
+            'education', 
+            'profession', 
+            'status', 
+            'online', 
+            'competences', 
+            'works', 
+            'orders', 
+            'review', 
+            'rating', 
+            'success_rate', 
+            'on_time_rate', 
+            'delivery', 
+            'subjects', 
+            'experience', 
+            'reviews'
     ];
 
     // Define the date format for soft deletes (optional)

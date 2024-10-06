@@ -24,6 +24,7 @@ class PageFactory extends Factory
             'title' => $this->faker->sentence(),
             'slug' => $this->faker->slug(),
             'page_title' => $this->faker->sentence(),
+            'page_description' => $this->faker->paragraph(),
             'image' => $this->faker->imageUrl(),
             'page_type' => $this->faker->randomElement(['service', 'page']),
             'content' => $this->faker->paragraph(),

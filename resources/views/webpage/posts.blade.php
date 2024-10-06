@@ -1,42 +1,33 @@
 @extends('layouts.web')
+ 
+@section('title', $meta['title'])
 
-@section('title')
-Home Page
+@section('meta')
+    <meta name="description" content="{{ $meta['description'] }}">
+    <meta name="keywords" content="{{ $meta['keywords'] }}">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{{ $meta['og']['type'] }}">
+    <meta property="og:locale" content="{{ $meta['og']['locale'] }}">
+    <meta property="og:site_name" content="{{ $meta['og']['site_name'] }}">
+    <meta property="og:url" content="{{ $meta['og']['url'] }}">
+    <meta property="og:image" content="{{ $meta['og']['image'] }}">
+    <meta property="og:image:type" content="{{ $meta['og']['image_type'] }}">
+    <meta property="og:description" content="{{ $meta['og']['description'] }}">
+    <!-- Twitter -->
+    <meta name="twitter:title" content="{{ $meta['twitter']['title'] }}">
+    <meta name="twitter:card" content="{{ $meta['twitter']['card'] }}">
+    <meta name="twitter:description" content="{{ $meta['twitter']['description'] }}">
+    <meta name="twitter:image" content="{{ $meta['twitter']['image'] }}">
 @endsection
 
 @section('head')
-<!-- General Meta Tags -->
-        <meta name="description" content="This is the home page of our website.">
-        <meta name="keywords" content="home, welcome, main page">
-
-        <!-- Open Graph Meta Tags -->
-        <meta property="og:title" content="Home Page">
-        <meta property="og:description" content="This is the home page of our website.">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:image" content="{{ asset('images/home-page.png') }}">
-
-        <!-- Twitter Meta Tags -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Home Page">
-        <meta name="twitter:description" content="This is the home page of our website.">
-        <meta name="twitter:image" content="{{ asset('images/home-page.png') }}">
-        <meta name="twitter:site" content="@YourTwitterHandle">
 @endsection
 
 @section('footer_scripts')
-
-@endsection
-
-@section('inner_page_hero_section_title')
-Our Blogs
-@endsection
-
-@section('inner_page_hero_section_mini_title')
-Our Blogs
 @endsection
 
 @section('content')
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     <!-- ===================================================== -->
@@ -77,12 +68,15 @@ Our Blogs
                 </div>
             </div>
 =======
+=======
+>>>>>>> parent of fc9fe7c (Latest)
     <div>
         <div class="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:sticky lg:top-24">
             <x-intro />
         </div>    
     </div>
     <div class="rounded-2xl bg-white p-6 shadow dark:bg-black dark:shadow-dark lg:col-span-2 lg:p-10">
+<<<<<<< HEAD
         <div class="">
             <h2 class="text-3xl font-semibold leading-tight text-dark dark:text-light lg:text-[40px] lg:leading-tight">My Recent Article and Publications</h2>
             <p class="mt-4 text-lg text-muted dark:text-light/70">I'm here to help if you're searching for a product designer to bring your idea to life or a design partner to help take your business to the next level.</p>
@@ -119,27 +113,16 @@ Our Blogs
             </div>
             {{ $posts->links('vendor.pagination.custom') }}
 >>>>>>> parent of 53ecb51 (Latest)
+=======
+        <x-title :page="$page"/>
+        <div class="mt-10 lg:mt-14">
+            @include('webpage.post')
+>>>>>>> parent of fc9fe7c (Latest)
         </div>
-     </section>
-    <!-- ===============  Blog section end ================ -->
-    <!-- ===================================================== -->
-
-    <!-- ===================================================== -->
-    <!-- ===============  Writer section start ================ -->
-    @include('partials.writers-section')
-    <!-- ===============  Writer section end ================ -->
-    <!-- ===================================================== -->
-
-    <!-- ===================================================== -->
-    <!-- ===============  Testimonials section start ================ -->
-    @include('partials.testimonials-section')
-    <!-- ===============  Testimonials section end ================ -->
-    <!-- ===================================================== -->
-
-    <!-- ===================================================== -->
-    <!-- ===============  Every Update section start ================ -->
-    @include('partials.every-update-section')
-    <!-- ===============  Every Update section end ================ -->
-    <!-- ===================================================== -->
-
+        <div class="mt-10 lg:mt-14">
+            @include('partials.contact')
+        </div>
+    </div>
 @endsection
+
+

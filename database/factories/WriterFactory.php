@@ -16,13 +16,7 @@ class WriterFactory extends Factory
     public function definition()
     {
         $educationOptions = ['PhD', 'Master'];
-        $competenceOptions = [
-            'International Taxation Law',
-            'Corporate Taxation Law',
-            'Tax Policy and Administration',
-            'Comparative Tax Law',
-            'Estate and Gift Taxation Law'
-        ];
+        $competenceOptions = ['Philosophy,Education','History','Nursing','Healthcare','Social Work',Classic English Literature',English 101','Education'];
 
         return [
             'user_id' => $this->faker->numberBetween(1, 11),
@@ -32,13 +26,20 @@ class WriterFactory extends Factory
             'name' => $this->faker->name,
             'about' => $this->faker->text,
             'education' => $this->faker->randomElement($educationOptions),
-            'experience' => $this->faker->numberBetween(1, 20) . ' Years',
-            'rating' => $this->faker->randomFloat(2, 0, 5),
-            'reviews' => $this->faker->numberBetween(0, 100),
-            'orders' => $this->faker->numberBetween(0, 100),
-            'success_rate' => $this->faker->randomFloat(2, 0, 100),
-            'competences' => implode(', ', $this->faker->randomElements($competenceOptions, $this->faker->numberBetween(1, count($competenceOptions)))),
+            'profession' => $this->faker->jobTitle,
+            'status' => $this->faker->randomElement(['Active', 'Inactive']),
             'online' => $this->faker->boolean,
+            'competences' => implode(', ', $this->faker->randomElements($competenceOptions, $this->faker->numberBetween(1, count($competenceOptions)))),
+            'works' => $this->faker->sentences(3, true),
+            'orders' => $this->faker->numberBetween(0, int2: 100),
+            'review' => $this->faker->numberBetween(0, 100),
+            'rating' => $this->faker->numberBetween(0, , 5),
+            'success_rate' => $this->faker->randomElement(['99%', '100%']),
+            'on_time_rate' => $this->faker->randomElement(['99%', '100%']),
+            'delivery' => $this->faker->randomElement(['8h+', '4h+']),
+            'subjects' => $this->faker->randomElement(['3+', '4+']),
+            'experience' => $this->faker->numberBetween(1, 20) . ' Years',
+            'reviews' => $this->faker->sentences(3, true),
         ];
     }
 }

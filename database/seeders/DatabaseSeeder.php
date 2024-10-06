@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
+        $this->call(ThemeOptionSeeder::class); // php artisan db:seed --class=ThemeOptionSeeder
         $this->call(PageSeeder::class); // php artisan db:seed --class=PageSeeder
         $this->call(CategorySeeder::class); // php artisan db:seed --class=CategorySeeder
         $this->call(PostSeeder::class); // php artisan db:seed --class=PostSeeder

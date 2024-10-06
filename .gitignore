@@ -1,6 +1,10 @@
 /.phpunit.cache
 /node_modules
+/public/build
+/public/hot
+/public/storage
 /storage/*.key
+/vendor
 .env
 .env.backup
 .env.production
@@ -14,3 +18,13 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+<<<<<<< HEAD
+resources/views/vendor/pagination/custom.blade.php
+resources/views/components/intro.blade.php
+resources/views/vendor/pagination/custom.blade.php
+=======
+database/migrations/0001_01_01_000000_create_users_table.php
+database/migrations/0001_01_01_000001_create_cache_table.php
+database/migrations/0001_01_01_000002_create_jobs_table.php
+database/migrations/2024_08_26_182954_create_customers_table.php
+>>>>>>> parent of fc9fe7c (Latest)

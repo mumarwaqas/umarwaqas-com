@@ -1,0 +1,23 @@
+name: Deploy website on push
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get latest code
+      uses: actions/checkout@v3
+    
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_HOSTNAME }}  # The FTP server hostname
+        username: ${{ secrets.FTP_USERNAME }}  # FTP username secret
+        password: ${{ secrets.FTP_PASSWORD }}  # FTP password secret
+        local-dir: ./  # Directory to upload (use `./` for the entire repo)
+        server-dir: ./public_html/  # Remote directory to upload files

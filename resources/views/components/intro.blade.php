@@ -1,12 +1,12 @@
 <div>
     <div class="aspect-4/5 overflow-hidden rounded-lg bg-light pt-4 text-center dark:bg-dark-2">
-        <img src="{{ asset('assets/images/' . $image) }}" alt="Web Developer in Lahore" width="100" height="100" class="lazy inline-block h-full w-full scale-110 object-cover object-top" lazy="loaded">
+        <img src="{{ asset('assets/images/' . $image) }}" alt="{{ $name }}" width="100" height="100" class="lazy inline-block h-full w-full scale-110 object-cover object-top" lazy="loaded">
     </div>
     <div class="mt-6">
         <h3 class="text-2xl font-semibold dark:text-light">{{ $name }} 👋</h3>
         <p class="mt-2 text-muted dark:text-light/70">{{ $summary }} 🖥️ </p>
         <div class="mt-6 flex flex-wrap gap-2">
-            <a href="https://marveltheme.com/tf/html/bentofolio-preview/index.html" class="inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-primary px-6 py-4 font-medium text-white transition hover:bg-blue-600 focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50">
+            <a href="https://marveltheme.com/tf/html/bentofolio-preview/index.html#" class="inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-primary px-6 py-4 font-medium text-white transition hover:bg-blue-600 focus:outline-none focus:ring disabled:pointer-events-none disabled:opacity-50">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" class="h-6 w-6">
                     <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Zm10 3a2 2 0 0 1 2 2m-2-6a6 6 0 0 1 6 6"> </path>
                 </svg>

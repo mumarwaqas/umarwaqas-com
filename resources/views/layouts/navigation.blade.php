@@ -24,9 +24,6 @@
                     <x-nav-link :href="route('customers.index')" :active="request()->routeIs('customers.index')">
                         {{ __('Customers') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('faqs.index')" :active="request()->routeIs('faqs.index')">
-                        {{ __('Faqs') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('writers.index')" :active="request()->routeIs('writers.index')">
                         {{ __('Writers') }}
                     </x-nav-link>

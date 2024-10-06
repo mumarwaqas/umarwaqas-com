@@ -29,7 +29,7 @@ class PostFactory extends Factory
             'user_id' => $this->faker->numberBetween(1, 11),
             'title' => $this->faker->sentence(),
             'slug' => $this->faker->slug(),
-            'image' => 'post-files/post-1-1725434851.webp', // $this->faker->imageUrl(),
+            'image' => 'post-files/Web-Designing-in-Lahore.jpg', // $this->faker->imageUrl(),
             'content' => $this->faker->paragraph(),
 
             // SEO Fields

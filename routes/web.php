@@ -9,7 +9,10 @@ use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\WritersController;
 use App\Http\Controllers\Admin\SamplesController;
 use App\Http\Controllers\Admin\CustomersController;
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of ee563be (Latest)
 
 use App\Http\Controllers\Admin\PagesController;
 

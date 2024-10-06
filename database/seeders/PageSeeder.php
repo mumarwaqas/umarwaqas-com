@@ -35,6 +35,9 @@ class PageSeeder extends Seeder
             $data = array_combine($header, $row); // Combine header with data
 
             // Insert the FAQ data into the database
+<<<<<<< HEAD
+>>>>>>> parent of ee563be (Latest)
+=======
 >>>>>>> parent of ee563be (Latest)
             Page::create([
                 'user_id'          => $row['user_id'] ?? null,

@@ -26,12 +26,15 @@
                         <thead>
                             <tr>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">#</td>
                                 <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">Title</td>
                                 <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">Author</td>
                                 <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">Created At</td>
                                 <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-right">Actions</td>
 =======
+=======
+>>>>>>> parent of ee563be (Latest)
                             {{-- <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">ID</td> --}}
                             <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">Title</td>
                             <td class="whitespace-pre py-2 px-4 border-b bg-gray-50 text-left">Author</td>

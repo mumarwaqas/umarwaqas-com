@@ -41,6 +41,9 @@ class WebPageController extends Controller
 
         $page = Page::where('slug', 'home')->firstOrFail();
         $meta = [
+<<<<<<< HEAD
+>>>>>>> parent of ee563be (Latest)
+=======
 >>>>>>> parent of ee563be (Latest)
                 'title' => $page->meta_title,
                 'description' => $page->meta_description,
@@ -61,8 +64,11 @@ class WebPageController extends Controller
                     'card' => 'summary_large_image',
                     'description' => $page->meta_description,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     'image' => $page->image ? asset($page->image) : asset('assets/images/logo.webp'),
 =======
+=======
+>>>>>>> parent of ee563be (Latest)
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
 >>>>>>> parent of ee563be (Latest)
                 ]
@@ -88,6 +94,7 @@ class WebPageController extends Controller
 
         $data['customers']  = Customer::orderBy('id', 'desc')->limit(10)->get();
         // $data['faqs']       = Faq::orderBy('id', 'desc')->limit(10)->get();
+<<<<<<< HEAD
 >>>>>>> parent of ee563be (Latest)
 
         $page = Page::where('slug', 'about')->firstOrFail();
@@ -122,9 +129,15 @@ class WebPageController extends Controller
     public function discount()
     {
         $page = Page::where('slug', 'discount')->firstOrFail();
+=======
+>>>>>>> parent of ee563be (Latest)
 
+        $page = Page::where('slug', 'about')->firstOrFail();
         $meta = [
+<<<<<<< HEAD
                 'page_title' => $page->page_title,
+=======
+>>>>>>> parent of ee563be (Latest)
 =======
 >>>>>>> parent of ee563be (Latest)
                 'title' => $page->meta_title,
@@ -145,6 +158,7 @@ class WebPageController extends Controller
                     'title' => $page->meta_title,
                     'card' => 'summary_large_image',
                     'description' => $page->meta_description,
+<<<<<<< HEAD
 <<<<<<< HEAD
                     'image' => $page->image ? asset($page->image) : asset('assets/images/logo.webp'),
                 ]
@@ -246,6 +260,8 @@ class WebPageController extends Controller
                     'title' => $page->meta_title,
                     'card' => 'summary_large_image',
                     'description' => $page->meta_description,
+=======
+>>>>>>> parent of ee563be (Latest)
 =======
 >>>>>>> parent of ee563be (Latest)
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
@@ -436,12 +452,15 @@ class WebPageController extends Controller
     public function services()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         $writers = Writer::orderBy('id', 'desc')->limit(5)->get();
         $samples = Sample::orderBy('id', 'desc')->limit(10)->get();
         $customers = Customer::orderBy('id', 'desc')->limit(5)->get();
         $faqs = Faq::orderBy('id', 'desc')->limit(10)->get();
         $page = Page::where('slug', 'services')->firstOrFail();
 =======
+=======
+>>>>>>> parent of ee563be (Latest)
         $page = Page::where('slug', 'services')->firstOrFail();
         $meta = [
                 'title' => $page->meta_title,
@@ -966,6 +985,7 @@ class WebPageController extends Controller
         $posts = Post::latest()->with(['user', 'profile', 'category'])->paginate(6);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Find the writer by writer_no
         $writers = Writer::orderBy('id', 'desc')->limit(5)->get();
         // $samples = Sample::orderBy('id', 'desc')->limit(10)->get();
@@ -975,6 +995,10 @@ class WebPageController extends Controller
 
         $meta = [
                 'page_title' => $page->page_title,
+=======
+        $page = Page::where('slug', 'blogs')->firstOrFail();
+        $meta = [
+>>>>>>> parent of ee563be (Latest)
 =======
         $page = Page::where('slug', 'blogs')->firstOrFail();
         $meta = [
@@ -998,6 +1022,7 @@ class WebPageController extends Controller
                     'card' => 'summary_large_image',
                     'description' => $page->meta_description,
 <<<<<<< HEAD
+<<<<<<< HEAD
                     'image' => $page->image ? asset($page->image) : asset('assets/images/logo.webp'),
                 ]
             ];
@@ -1005,6 +1030,8 @@ class WebPageController extends Controller
         // return view('webpage.home')->with(['meta' => $meta])->with(['writers' => $writers])->with(['samples' => $samples])->with(['customers' => $customers])->with(['faqs' => $faqs]);
         return view('webpage.posts')->with(['meta' => $meta])->with(['posts' => $posts])->with(['writers' => $writers])->with(['customers' => $customers]);
 =======
+=======
+>>>>>>> parent of ee563be (Latest)
                     'image' => asset('assets/images/Web-Developer-in-Lahore.jpg'),
                 ]
             ];

@@ -14,6 +14,7 @@
         <div class="mb-4">
             <label for="title" class="block text-gray-700 font-medium mb-2">Title</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <input type="text" name="title" id="title" class="form-input mt-1 block w-full @error('title') border-red-500 @enderror" value="{{ old('title', $page->title ?? '') }}" onkeyup="generateSlug()">
 
             <!-- Current host URL -->
@@ -33,11 +34,15 @@
 =======
             <input type="text" name="title" id="title" class="form-input mt-1 block w-full @error('title') border-red-500 @enderror" value="{{ old('title', $page->title ?? '') }}">
 >>>>>>> parent of ee563be (Latest)
+=======
+            <input type="text" name="title" id="title" class="form-input mt-1 block w-full @error('title') border-red-500 @enderror" value="{{ old('title', $page->title ?? '') }}">
+>>>>>>> parent of ee563be (Latest)
             @error('title')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror
             <p class="text-gray-500 text-xs mt-1">Enter the title of the post.</p>
         </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
     </div>
 
@@ -54,6 +59,8 @@
             @enderror
             <p class="text-gray-500 text-xs mt-1">Enter the page title of the post. This will be displayed as the main heading.</p>
         </div>
+=======
+>>>>>>> parent of ee563be (Latest)
 =======
 >>>>>>> parent of ee563be (Latest)
 
@@ -144,6 +151,7 @@
         </button>
     </div>
 </form>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 @push('scripts')
@@ -377,5 +385,7 @@ div#cke_notifications_area_editor {
 
 
 @endpush
+=======
+>>>>>>> parent of ee563be (Latest)
 =======
 >>>>>>> parent of ee563be (Latest)
